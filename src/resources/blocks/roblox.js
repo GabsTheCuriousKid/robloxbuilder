@@ -26,7 +26,9 @@ function register() {
                 "type": "field_dropdown",
                 "name": "TYPE",
                 "options": [
-                    [ "name", "name" ],
+                    [ "name", "Name" ],
+                    [ "classname", "ClassName" ],
+                    [ "parent", "Parent" ],
                 ]
             },
         ],

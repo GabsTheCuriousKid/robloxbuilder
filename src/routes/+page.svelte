@@ -366,7 +366,7 @@
             </div>
             <div class="row-subsubmenus">
                 <div class="codeActionsWrapper">
-                    <p style="margin-right: 12px"><b>Extension Code</b></p>
+                    <p style="margin-right: 12px"><b>Generated Code</b></p>
                     <StyledButton
                         on:click={() => {
                             // copy code
