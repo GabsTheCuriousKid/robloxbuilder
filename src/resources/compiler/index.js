@@ -147,7 +147,9 @@ class Compiler {
             start
         ];
         const classRegistry = {
-            extensionInfo: {}
+            ``,
+            extensionInfo: {},
+            ``,
         }
         const footerCode = [
             ``
