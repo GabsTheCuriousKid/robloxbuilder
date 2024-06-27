@@ -33,7 +33,7 @@ function register() {
         ],
         inputsInline: true,
         colour: categoryColor
-    }, () => {
+    }, (block) => {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || ''
         const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
