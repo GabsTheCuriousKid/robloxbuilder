@@ -20,7 +20,7 @@
 
 <div class="nav">
     <img
-        src="/favicon_any.png"
+        src="/favicon.png"
         alt="Logo"
         class="logo-margin"
         style="height: 30px;"
