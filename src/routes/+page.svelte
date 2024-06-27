@@ -392,7 +392,7 @@
 <div class="main">
     <div class="row-menus">
         <div class="row-first-submenus">
-            uhhhhhh --> <div class="blockMenuButtons">
+            <div class="blockMenuButtons">
                 <StyledButton
                     on:click={() => {
                         ModalState.extensionColors = true;
