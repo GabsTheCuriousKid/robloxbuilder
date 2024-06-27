@@ -14,8 +14,8 @@ class Compiler {
 
         const headerCode = [
             `--\[\[`,
-            `   This extension was made with RobloxBuilder!`,
-            `   https://robloxbuilder.vercel.app/`,
+            `\   This extension was made with RobloxBuilder!`,
+            `\   https://robloxbuilder.vercel.app/`,
             `\]\]`,
             ``,
         ];
