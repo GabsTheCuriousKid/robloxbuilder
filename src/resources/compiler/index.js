@@ -16,14 +16,13 @@ class Compiler {
             `--[[`,
             `   This extension was made with RobloxBuilder!`,
             `   https://robloxbuilder.vercel.app/`,
-            `]]`
+            `]]--`
             ``,
-            start
         ];
         const classRegistry = {
-            top: [``],
+            top: [`-- idk`],
             extensionInfo: {},
-            bottom: [``],
+            bottom: [`-- idk`],
         }
         const footerCode = [
             ``
