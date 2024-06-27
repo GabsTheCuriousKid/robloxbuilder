@@ -1,5 +1,10 @@
 <xml>
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
+        <block type="funcs_call" />
+    </category>
+    <category name="Roblox" colour="#000000">
+        <block type="roblox_parent" />
+        <block type="roblox_type" />
     </category>
 </xml>

@@ -48,9 +48,11 @@
 
     import registerCore from "../resources/blocks/core.js";
     import registerFuncs from "../resources/blocks/functions.js";
+    import registerRoblox from "../resources/blocks/roblox.js";
 
     registerCore();
     registerFuncs();
+    registerRoblox();
 
     const en = {
         rtl: false,
@@ -122,7 +124,7 @@
     };
     const extensionMetadata = {
         id: "extensionID",
-        name: "Extension",
+        name: "Script",
         docsURL: "",
         color1: "#0088ff",
         color2: "#0063ba",
@@ -169,9 +171,9 @@
     function downloadProject() {
         // generate file name
         let filteredProjectName = (projectName || projectID).replace(/[^a-z0-9\-]+/gim, "_");
-        let fileName = filteredProjectName + ".tb";
+        let fileName = filteredProjectName + ".rb";
         if (!filteredProjectName) {
-            fileName = "MyProject.tb";
+            fileName = "MyProject.rb";
         }
 
         // data
@@ -202,7 +204,7 @@
         });
     }
     function loadProject() {
-        fileDialog({ accept: ".tb" }).then((files) => {
+        fileDialog({ accept: ".rb" }).then((files) => {
             if (!files) return;
             const file = files[0];
 
