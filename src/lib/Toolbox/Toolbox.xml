@@ -2,6 +2,7 @@
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
         <block type="funcs_call" />
+        <block type="funcs_callreporter" />
     </category>
     <category name="Roblox" colour="#000000">
         <block type="roblox_parent" />

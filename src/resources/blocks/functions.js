@@ -42,6 +42,31 @@ function register() {
         return `${code}\n`;
     });
 
+    registerBlock(`${categoryPrefix}callreporter`, {
+        message0: 'call %1 values: %2',
+        args0: [
+            {
+                "type": "field_input",
+                "name": "ID",
+                "text": "id",
+                "spellcheck": false
+            },
+            {
+                "type": "field_input",
+                "name": "VALUES",
+                "text": "values",
+                "spellcheck": false
+            }
+        ],
+        output: "String",
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const ID = block.getFieldValue('ID')
+        const VALUES = block.getFieldValue('VALUES') || '';
+        return [`${ID}(${VALUES})`, javascriptGenerator.ORDER_ATOMIC];
+    });
+
     registerBlock(`${categoryPrefix}call`, {
         message0: 'call %1 values: %2',
         args0: [
@@ -58,13 +83,15 @@ function register() {
                 "spellcheck": false
             }
         ],
+        nextStatement: null,
+        previousStatement: null,
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || '';
         
-        const code = `${ID}(${VALUES})`;
+        const code = `${ID}(${VALUES});`;
         return `${code}\n`;
     });
 }

@@ -36,7 +36,7 @@ function register() {
     }, (block) => {
         const OBJECT = javascriptGenerator.valueToCode(block, 'OBJECT', javascriptGenerator.ORDER_ATOMIC)
         const TYPE = block.getFieldValue('TYPE');
-        return [`%1`, javascriptGenerator.ORDER_ATOMIC];
+        return [`${OBJECT}.${TYPE}`, javascriptGenerator.ORDER_ATOMIC];
     });
 }
 
