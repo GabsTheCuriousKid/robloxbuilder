@@ -1,0 +1,5 @@
+<xml>
+    <category name="Core" colour="#FF4B4B">
+        <block type="core_builderblock" />
+    </category>
+</xml>
