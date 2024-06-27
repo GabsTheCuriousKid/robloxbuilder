@@ -152,6 +152,9 @@ class Compiler {
         const footerCode = [
             ``
         ];
+        if (extensionMetadata) {
+          classRegistry.extensionInfo.name = extensionMetadata.name;
+        }
 
         return [].concat(headerCode, classRegistry.top, [
             `${JSON.stringify(classRegistry.extensionInfo).substring(0, JSON.stringify(classRegistry.extensionInfo).length - 1)}`,

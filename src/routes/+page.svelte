@@ -9,10 +9,6 @@
 
     // Modals
     import ExtensionColorsModal from "$lib/MenuModals/ExtensionColors.svelte";
-    import CreateBlockModal from "$lib/MenuModals/CreateBlock.svelte";
-
-    // Modal Scripts
-    import CreateBlockModalScript from "$lib/MenuModals/createblock.js";
 
     // Toolbox
     import Toolbox from "$lib/Toolbox/Toolbox.xml?raw";
@@ -51,32 +47,8 @@
     registerGeneric();
 
     import registerCore from "../resources/blocks/core.js";
-    import registerEvents from "../resources/blocks/events.js";
-    import registerControl from "../resources/blocks/control.js";
-    import registerSensing from "../resources/blocks/sensing.js";
-    import registerSound from "../resources/blocks/sound.js";
-    import registerLiterals from "../resources/blocks/literals.js";
-    import registerOperators from "../resources/blocks/operators.js";
-    import registerConversions from "../resources/blocks/conversions.js";
-    import registerVariables from "../resources/blocks/variables.js";
-    import registerJSON from "../resources/blocks/json.js";
-    import registerBlocks from "../resources/blocks/blocks.js";
-    import registerFunctions from "../resources/blocks/functions.js";
-    import registerDebug from "../resources/blocks/debug.js";
-    
+
     registerCore();
-    registerControl();
-    registerEvents();
-    registerSound();
-    registerSensing();
-    registerLiterals();
-    registerOperators();
-    registerConversions();
-    registerVariables();
-    registerJSON();
-    registerBlocks();
-    registerFunctions();
-    registerDebug();
 
     const en = {
         rtl: false,
@@ -358,79 +330,26 @@
     }
 </script>
 
-<CreateBlockModal
-    color1={extensionMetadata.color1}
-    color2={extensionMetadata.color2}
-    color3={extensionMetadata.color3}
-/>
-{#if ModalState.extensionColors}
-    <ExtensionColorsModal
-        color1={extensionMetadata.color1}
-        color2={extensionMetadata.color2}
-        color3={extensionMetadata.color3}
-        tbShow={extensionMetadata.tbShow}
-        on:completed={(colors) => {
-            ModalState.extensionColors = false;
-            extensionMetadata.color1 = colors.detail.color1;
-            extensionMetadata.color2 = colors.detail.color2;
-            extensionMetadata.color3 = colors.detail.color3;
-            extensionMetadata.tbShow = colors.detail.tbShow;
-            updateGeneratedCode();
-        }}
-        on:cancel={() => {
-            ModalState.extensionColors = false;
-            updateGeneratedCode();
-        }}
-    />
-{/if}
 <NavigationBar>
     <NavigationButton on:click={discordInvite}>Discord</NavigationButton>
     <NavigationDivider />
     <NavigationButton on:click={downloadProject}>Save</NavigationButton>
     <NavigationButton on:click={loadProject}>Load</NavigationButton>
+    <NavigationDivider />
+    <input
+        class="project-name"
+        type="text"
+        placeholder="Script Name (ex: Script)"
+        style="margin-left:4px;margin-right:4px"
+        bind:value={projectName}
+        on:change={updateGeneratedCode}
+    />
 </NavigationBar>
 <div class="main">
     <div class="row-menus">
         <div class="row-first-submenus">
             <div class="blockMenuButtons">
-                <StyledButton
-                    on:click={() => {
-                        ModalState.extensionColors = true;
-                    }}
-                >
-                    Edit Extension Colors
-                </StyledButton>
-                <div style="margin-left:8px" />
-                <!--<StyledButton
-                    on:click={() => {
-                        CreateBlockModalScript.open();
-                    }}
-                >
-                    Create an Extension Block
-                </StyledButton> wont need this since im changing the system -->
-                <div style="margin-left:8px" />
-                <div class="extensionMenuPreview">
-                    <div style="text-align: center;">
-                        {#if !extensionImageStates.icon.loading && !extensionImageStates.icon.failed && extensionImageStates.icon.image}
-                            <div
-                                class="extensionBubbleIcon"
-                                style={`border: 0; border-radius: 0; background-image: url(${extensionImageStates.icon.image})`}
-                            />
-                        {:else}
-                            <div
-                                class="extensionBubbleIcon"
-                                style={`background: ${extensionMetadata.color1}; border-color: ${extensionMetadata.color2}`}
-                            />
-                        {/if}
-                        <div class="extensionBubbleName">
-                            {#if projectName}
-                                {projectName}
-                            {:else}
-                                Extension
-                            {/if}
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="blocklyWrapper">
                 <BlocklyComponent {config} locale={en} bind:workspace />
@@ -439,61 +358,7 @@
         <div class="row-submenus">
             <div class="assetsWrapper">
                 <h1>Assets</h1>
-                <p>
-                    Extra things that will appear under
-                    {#if projectName}
-                        "{projectName}"
-                    {:else}
-                        "Extension"
-                    {/if}
-                    in the block list.
-                    <br />
-                    These things are not required, so you can leave them empty if
-                    you do not need them.
-                </p>
-                <p>
-                    Documentation URL:
-                    <input
-                        type="text"
-                        placeholder="https://..."
-                        bind:value={extensionMetadata.docsURL}
-                        on:change={updateGeneratedCode}
-                    />
-                </p>
-                <p>
-                    Extension Icon:
-                    <input type="file" on:change={extensionIconAdded} />
-                </p>
-                {#if !extensionImageStates.icon.loading && !extensionImageStates.icon.failed && extensionImageStates.icon.image}
-                    <img
-                        alt="Extension Icon"
-                        title="Extension Icon"
-                        class="extensionIcon"
-                        src={extensionImageStates.icon.image}
-                    />
-                {/if}
-                {#if extensionImageStates.icon.image}
-                    {#if extensionImageStates.icon.failed}
-                        <p class="warning">
-                            The extension icon is not an image, this may appear
-                            broken in the category list.
-                        </p>
-                    {/if}
-                    {#if !extensionImageStates.icon.square}
-                        <p class="warning">
-                            The image is not square, this may appear broken in
-                            the category list.
-                        </p>
-                    {/if}
-                {/if}
-                <h3>Extra Icons</h3>
-                <p>
-                    Blocks can use their own icons instead of the Extension
-                    icon.
-                    <br />
-                    Add more images here to use them.
-                </p>
-                <StyledButton>Add Image</StyledButton>
+                <p>There's currently nothing to change here yet.</p>
             </div>
             <div class="row-subsubmenus">
                 <div class="codeActionsWrapper">
