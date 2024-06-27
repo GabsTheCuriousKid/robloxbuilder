@@ -13,7 +13,10 @@ class Compiler {
         const code = javascriptGenerator.workspaceToCode(workspace);
 
         const headerCode = [
-            `--[[\n   'This extension was made with RobloxBuilder!'\n   'https://robloxbuilder.vercel.app/'\n]]`,
+            `--[[`,
+            `    'This extension was made with RobloxBuilder!'`,
+            `    'https://robloxbuilder.vercel.app/'`,
+            `]]`,
             ``,
         ];
         const classRegistry = {
