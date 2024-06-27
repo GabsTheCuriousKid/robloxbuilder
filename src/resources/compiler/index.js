@@ -31,7 +31,7 @@ class Compiler {
           classRegistry.extensionInfo.name = extensionMetadata.name;
         }
 
-        return [headerCode] + [].concat(code).join('\n');
+        return headerCode + '\n' + [].concat(code).join('\n');
     }
 }
 
