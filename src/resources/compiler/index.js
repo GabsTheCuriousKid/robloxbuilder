@@ -16,7 +16,7 @@ class Compiler {
             `--[[`,
             `   This extension was made with RobloxBuilder!`,
             `   https://robloxbuilder.vercel.app/`,
-            `]]--`
+            `]]`,
             ``,
         ];
         const classRegistry = {
