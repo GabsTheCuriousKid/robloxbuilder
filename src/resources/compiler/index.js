@@ -158,9 +158,9 @@ class Compiler {
           classRegistry.extensionInfo.name = extensionMetadata.name;
         }
 
-        return [].concat(headerCode, classRegistry.top, [
+        return [].concat(headerCode, [
             `${JSON.stringify(classRegistry.extensionInfo).substring(0, JSON.stringify(classRegistry.extensionInfo).length - 1)}`,
-        ], classRegistry.bottom, code, footerCode).join('\n');
+        ], code).join('\n');
     }
 }
 

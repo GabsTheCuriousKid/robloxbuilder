@@ -47,8 +47,10 @@
     registerGeneric();
 
     import registerCore from "../resources/blocks/core.js";
+    import registerFuncs from "../resources/blocks/functions.js";
 
     registerCore();
+    registerFuncs();
 
     const en = {
         rtl: false,
