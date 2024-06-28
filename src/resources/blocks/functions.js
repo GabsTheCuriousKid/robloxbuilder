@@ -75,7 +75,7 @@ function register() {
         const VALUES = block.getFieldValue('VALUES') || ''
         const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
         
-        const code = `local function ${ID}(${VALUES}) { ${FUNC} }`;
+        const code = `local\ function ${ID}(${VALUES}) { ${FUNC} }`;
         return `${code}\n`;
     });
 
