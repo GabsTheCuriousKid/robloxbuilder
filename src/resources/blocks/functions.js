@@ -117,7 +117,7 @@ function register() {
         args0: [
             {
                 "type": "field_input",
-                "name": "TEXT",
+                "name": "RAW",
                 "text": "text",
                 "spellcheck": false
             },
