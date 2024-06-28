@@ -21,7 +21,7 @@ function register() {
     }, (block) => {
         const NUMBER = javascriptGenerator.valueToCode(block, 'NUMBER', javascriptGenerator.ORDER_ATOMIC)
         
-        const code = `wait(${TEXT});`;
+        const code = `wait(${NUMBER});`;
         return `${code}\n`;
     });
 }

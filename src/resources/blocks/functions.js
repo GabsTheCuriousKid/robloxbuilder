@@ -111,6 +111,27 @@ function register() {
         const code = `return ${VALUE || ''}`;
         return `${code}\n`;
     })
+
+    registerBlock(`${categoryPrefix}raw`, {
+        message0: 'raw %1',
+        args0: [
+            {
+                "type": "field_input",
+                "name": "TEXT",
+                "text": "text",
+                "spellcheck": false
+            },
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const RAW = block.getFieldValue('RAW')
+        
+        const code = `${RAW}`;
+        return `${code}\n`;
+    });
 }
 
 export default register;

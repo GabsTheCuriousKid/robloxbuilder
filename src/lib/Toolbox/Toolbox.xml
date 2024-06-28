@@ -15,8 +15,9 @@
         <block type="funcs_function" />
         <block type="funcs_call" />
         <block type="funcs_callreporter" />
-        <!--<sep gap="48" />
-        <block type="funcs_return" />-->
+        <sep gap="48" />
+        <block type="funcs_raw" />
+        <!--<block type="funcs_return" />-->
     </category>
     <category name="Roblox" colour="#000000">
         <block type="roblox_parent" />
