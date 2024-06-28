@@ -37,7 +37,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const NUMBER = block.getFieldValue('NUMBER');
-        return [`\'${NUMBER}\'`, javascriptGenerator.ORDER_ATOMIC];
+        return [`${NUMBER}`, javascriptGenerator.ORDER_ATOMIC];
     });
 }
 

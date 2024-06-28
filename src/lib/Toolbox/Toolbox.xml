@@ -13,6 +13,7 @@
     </category>
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
+        <block type="funcs_localfunction" />
         <block type="funcs_call" />
         <block type="funcs_callreporter" />
         <sep gap="48" />

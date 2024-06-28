@@ -6,7 +6,7 @@ const categoryColor = '#ff4b4b';
 
 function register() {
     registerBlock(`${categoryPrefix}function`, {
-        message0: 'function %1 %2 values: %3 %4 %5',
+        message0: 'global function %1 %2 values: %3 %4 %5',
         args0: [
             {
                 "type": "field_input",
@@ -39,6 +39,43 @@ function register() {
         const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
         
         const code = `function ${ID}(${VALUES}) { ${FUNC} }`;
+        return `${code}\n`;
+    });
+
+    registerBlock(`${categoryPrefix}localfunction`, {
+        message0: 'local function %1 %2 values: %3 %4 %5',
+        args0: [
+            {
+                "type": "field_input",
+                "name": "ID",
+                "text": "id",
+                "spellcheck": false
+            },
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "field_input",
+                "name": "VALUES",
+                "text": "1, 2, ...",
+                "spellcheck": false
+            },
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_statement",
+                "name": "FUNC"
+            }
+        ],
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const ID = block.getFieldValue('ID')
+        const VALUES = block.getFieldValue('VALUES') || ''
+        const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
+        
+        const code = `local function ${ID}(${VALUES}) { ${FUNC} }`;
         return `${code}\n`;
     });
 
