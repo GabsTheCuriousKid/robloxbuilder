@@ -21,6 +21,7 @@ function register() {
             {
                 "type": "input_value",
                 "name": "OBJECT",
+                "check": "String",
             },
             {
                 "type": "field_dropdown",

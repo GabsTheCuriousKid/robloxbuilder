@@ -1,10 +1,22 @@
 <xml>
+    <category name="Control" colour="#FFAB19">
+        <block type="control_wait" />
+    </category>
+    <category name="Sensing" colour="#5CB1D6">
+        <block type="sensing_print" />
+        <block type="sensing_warn" />
+        <block type="sensing_error" />
+    </category>
+    <category name="Inputs" colour="#FF6680">
+        <block type="inputs_string" />
+        <block type="inputs_number" />
+    </category>
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
         <block type="funcs_call" />
         <block type="funcs_callreporter" />
-        <sep gap="48" />
-        <block type="funcs_return" />
+        <!--<sep gap="48" />
+        <block type="funcs_return" />-->
     </category>
     <category name="Roblox" colour="#000000">
         <block type="roblox_parent" />

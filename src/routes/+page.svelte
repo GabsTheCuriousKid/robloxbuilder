@@ -47,10 +47,16 @@
     registerGeneric();
 
     import registerCore from "../resources/blocks/core.js";
+    import registerControl from "../resources/blocks/control.js";
+    import registerSensing from "../resources/blocks/sensing.js";
+    import registerInputs from "../resources/blocks/inputs.js";
     import registerFuncs from "../resources/blocks/functions.js";
     import registerRoblox from "../resources/blocks/roblox.js";
 
     registerCore();
+    registerControl();
+    registerSensing();
+    registerInputs();
     registerFuncs();
     registerRoblox();
 
