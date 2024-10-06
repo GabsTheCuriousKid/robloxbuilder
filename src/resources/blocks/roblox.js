@@ -82,7 +82,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const SERVICE = block.getFieldValue('SERVICE');
-        return [`game:GetService('${TYPE}')`, javascriptGenerator.ORDER_ATOMIC];
+        return [`game:GetService('${SERVICE}')`, javascriptGenerator.ORDER_ATOMIC];
     });
 }
 

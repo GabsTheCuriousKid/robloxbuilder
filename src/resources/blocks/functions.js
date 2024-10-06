@@ -154,7 +154,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const Name = block.getFieldValue('LOCALNAME')
-        const Definition = block.getFieldValue('DEFINE')
+        const Definition = javascriptGenerator.valueToCode(block, 'DEFINE', javascriptGenerator.ORDER_ATOMIC)
         
         const code = `local\t ${Name} = ${Definition}`;
         return `${code}\n`;
