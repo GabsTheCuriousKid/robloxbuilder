@@ -74,7 +74,7 @@ function register() {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || ''
         const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
-        const SPACE = " "
+        const SPACE = "\t "
         
         const code = `local${SPACE}function ${ID}(${VALUES}) { ${FUNC} }`;
         return `${code}\n`;
@@ -130,6 +130,83 @@ function register() {
         const VALUES = block.getFieldValue('VALUES') || '';
         
         const code = `${ID}(${VALUES});`;
+        return `${code}\n`;
+    });
+
+    registerBlock(`${categoryPrefix}local`, {
+        message0: 'local %1 equals %2',
+        args0: [
+            {
+                "type": "field_input",
+                "name": "LOCALNAME",
+                "text": "text",
+                "spellcheck": false
+            },
+            {
+                "type": "input_value",
+                "name": "DEFINE",
+                "check": "String",
+            },
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const Name = block.getFieldValue('LOCALNAME')
+        const Definition = block.getFieldValue('DEFINE')
+        
+        const code = `local\t ${Name} = ${Definition}`;
+        return `${code}\n`;
+    });
+
+    registerBlock(`${categoryPrefix}localnoeq`, {
+        message0: 'local %1',
+        args0: [
+            {
+                "type": "field_input",
+                "name": "LOCALNAME",
+                "text": "text",
+                "spellcheck": false
+            },
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const Name = block.getFieldValue('LOCALNAME')
+        
+        const code = `local\t ${Name}`;
+        return `${code}\n`;
+    });
+
+    registerBlock(`${categoryPrefix}localtable`, {
+        message0: 'local %1 equals %2 %3',
+        args0: [
+            {
+                "type": "field_input",
+                "name": "LOCALNAME",
+                "text": "text",
+                "spellcheck": false
+            },
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_statement",
+                "name": "TABLE"
+            }
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const Name = block.getFieldValue('LOCALNAME')
+        const Table = javascriptGenerator.statementToCode(block, 'TABLE');
+        
+        const code = `local\t ${Name} = {${Table}}`;
         return `${code}\n`;
     });
 

@@ -39,6 +39,17 @@ function register() {
         const NUMBER = block.getFieldValue('NUMBER');
         return [`${NUMBER}`, javascriptGenerator.ORDER_ATOMIC];
     });
+
+    registerBlock(`${categoryPrefix}nil`, {
+        message0: 'nil',
+        args0: [],
+        inputsInline: true,
+        output: "String",
+        colour: categoryColor
+    }, (block) => {
+        const STRING = block.getFieldValue('STRING');
+        return [`nil`, javascriptGenerator.ORDER_ATOMIC];
+    });
 }
 
 export default register;

@@ -41,6 +41,49 @@ function register() {
         const TYPE = block.getFieldValue('TYPE');
         return [`${OBJECT}.${TYPE}`, javascriptGenerator.ORDER_ATOMIC];
     });
+
+    registerBlock(`${categoryPrefix}getservice`, {
+        message0: 'Get Service %1',
+        args0: [
+            {
+                "type": "field_dropdown",
+                "name": "SERVICE",
+                "options": [
+                    [ "AdService", "Ad Service" ],
+                    [ "AssetService", "Asset Service" ],
+                    [ "AnalyticsService", "Analytics Service" ],
+                    [ "DataStoreService", "Data Store Service" ],
+                    [ "GuiService", "Gui Service" ],
+                    [ "Lighting", "Lighting" ],
+                    [ "LogService", "Log Service" ],
+                    [ "Players", "Players" ],
+                    [ "PointsService", "Points Service" ],
+                    [ "RunService", "Run Service" ],
+                    [ "ReplicatedFirst", "Replicated First" ],
+                    [ "ReplicatedService", "Replicated Service" ],
+                    [ "RunService", "Run Service" ],
+                    [ "ScriptService", "Script Service" ],
+                    [ "ServerScriptService", "Server Script Service" ],
+                    [ "ServerStorage", "Server Storage" ],
+                    [ "SoundService", "Sound Service" ],
+                    [ "StarterGui", "Starter Gui" ],
+                    [ "StarterPack", "Starter Pack" ],
+                    [ "StarterPlayer", "Starter Player" ],
+                    [ "Teams", "Teams" ],
+                    [ "TextService", "Text Service" ],
+                    [ "TextChatService", "Text Chat Service" ],
+                    [ "TweenService", "Tween Service" ],
+                    [ "Workspace", "Workspace" ],
+                ]
+            },
+        ],
+        inputsInline: true,
+        output: "String",
+        colour: categoryColor
+    }, (block) => {
+        const SERVICE = block.getFieldValue('SERVICE');
+        return [`game:GetService('${TYPE}')`, javascriptGenerator.ORDER_ATOMIC];
+    });
 }
 
 export default register;

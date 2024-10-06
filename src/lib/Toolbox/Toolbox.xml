@@ -10,6 +10,7 @@
     <category name="Inputs" colour="#FF6680">
         <block type="inputs_string" />
         <block type="inputs_number" />
+        <block type="inputs_nil" />
     </category>
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
@@ -17,11 +18,16 @@
         <block type="funcs_call" />
         <block type="funcs_callreporter" />
         <sep gap="48" />
+        <block type="funcs_local" />
+        <block type="funcs_localnoeq" />
+        <block type="funcs_localtable" />
+        <sep gap="48" />
         <block type="funcs_raw" />
-        <!--<block type="funcs_return" />-->
+        <block type="funcs_return" />
     </category>
     <category name="Roblox" colour="#000000">
         <block type="roblox_parent" />
         <block type="roblox_type" />
+        <block type="roblox_getservice" />
     </category>
 </xml>
