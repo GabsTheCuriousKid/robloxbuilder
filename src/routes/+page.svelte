@@ -47,6 +47,7 @@
     registerGeneric();
 
     import registerCore from "../resources/blocks/core.js";
+    import registerEvents from "../resources/blocks/events.js";
     import registerControl from "../resources/blocks/control.js";
     import registerSensing from "../resources/blocks/sensing.js";
     import registerInputs from "../resources/blocks/inputs.js";
@@ -54,6 +55,7 @@
     import registerRoblox from "../resources/blocks/roblox.js";
 
     registerCore();
+    registerEvents();
     registerControl();
     registerSensing();
     registerInputs();

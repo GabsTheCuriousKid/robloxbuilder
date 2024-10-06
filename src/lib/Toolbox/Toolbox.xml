@@ -1,6 +1,11 @@
 <xml>
+    <category name="Events" colour="#FFBF00">
+        <block type="events_whenplayerjoins" />
+    </category>
     <category name="Control" colour="#FFAB19">
         <block type="control_wait" />
+        <sep gap="48" />
+        <block type="control_whiletruedo" />
     </category>
     <category name="Sensing" colour="#5CB1D6">
         <block type="sensing_print" />
