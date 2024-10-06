@@ -17,13 +17,12 @@ function register() {
             }
         ],
         nextStatement: null,
-        previousStatement: null,
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
         const Blocks = javascriptGenerator.statementToCode(block, 'CODE');
         
-        const code = `game.Players.PlayerAdded:connect(function(Player))\n${Blocks}\nend)`;
+        const code = `game.Players.PlayerAdded:connect(function(Player) ${Blocks}\nend)`;
         return `${code}\n`;
     });
 }

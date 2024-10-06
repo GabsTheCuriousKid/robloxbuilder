@@ -36,7 +36,6 @@ function register() {
                 "name": "CODE"
             }
         ],
-        nextStatement: null,
         previousStatement: null,
         inputsInline: true,
         colour: categoryColor
