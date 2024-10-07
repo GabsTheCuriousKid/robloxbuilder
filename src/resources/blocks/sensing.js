@@ -1,5 +1,5 @@
 import luaGenerator from '../luaGenerator';
-import registerBlock from '../register';
+import registerBlock from '../register/lua.js';
 
 const categoryPrefix = 'sensing_';
 const categoryColor = '#5CB1D6';

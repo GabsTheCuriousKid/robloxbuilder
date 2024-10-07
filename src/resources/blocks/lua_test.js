@@ -1,5 +1,5 @@
 import luaGenerator from '../luaGenerator';
-import registerBlock from '../register/lua.js';
+import registerBlock from '../register/lua.js/lua.js';
 
 const categoryPrefix = 'lua_';
 const categoryColor = '#FF0000';

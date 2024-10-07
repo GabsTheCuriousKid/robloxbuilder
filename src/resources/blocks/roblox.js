@@ -1,5 +1,5 @@
 import luaGenerator from '../luaGenerator';
-import registerBlock from '../register';
+import registerBlock from '../register/lua.js';
 
 const categoryPrefix = 'roblox_';
 const categoryColor = '#000000';
