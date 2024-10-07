@@ -282,7 +282,7 @@
         const beautified = beautifyGeneratedCode(code);
         const highlighted = Prism.highlight(
             beautified,
-            Prism.languages.lua
+            Prism.languages.javascript
         );
         return highlighted;
     }
