@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'funcs_';
@@ -36,7 +36,7 @@ function register() {
     }, (block) => {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || ''
-        const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
+        const FUNC = luaGenerator.statementToCode(block, 'FUNC');
         
         const code = `function ${ID}(${VALUES}) { ${FUNC} }`;
         return `${code}\n`;
@@ -73,7 +73,7 @@ function register() {
     }, (block) => {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || ''
-        const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
+        const FUNC = luaGenerator.statementToCode(block, 'FUNC');
         const SPACE = "\t "
         
         const code = `local${SPACE}function ${ID}(${VALUES}) \n${FUNC} \nend)`;
@@ -102,7 +102,7 @@ function register() {
     }, (block) => {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || '';
-        return [`${ID}(${VALUES})`, javascriptGenerator.ORDER_ATOMIC];
+        return [`${ID}(${VALUES})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}call`, {
@@ -154,7 +154,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const Name = block.getFieldValue('LOCALNAME')
-        const Definition = javascriptGenerator.valueToCode(block, 'DEFINE', javascriptGenerator.ORDER_ATOMIC)
+        const Definition = luaGenerator.valueToCode(block, 'DEFINE', luaGenerator.ORDER_ATOMIC)
         
         const code = `local\t ${Name} = ${Definition}`;
         return `${code}\n`;
@@ -204,7 +204,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const Name = block.getFieldValue('LOCALNAME')
-        const Table = javascriptGenerator.statementToCode(block, 'TABLE');
+        const Table = luaGenerator.statementToCode(block, 'TABLE');
         
         const code = `local\t ${Name} = {${Table}}`;
         return `${code}\n`;
@@ -222,7 +222,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const VALUE = javascriptGenerator.valueToCode(block, 'VALUE', javascriptGenerator.ORDER_ATOMIC);
+        const VALUE = luaGenerator.valueToCode(block, 'VALUE', luaGenerator.ORDER_ATOMIC);
         const code = `return ${VALUE || ''}`;
         return `${code}\n`;
     })

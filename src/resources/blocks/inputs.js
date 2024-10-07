@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'inputs_';
@@ -20,7 +20,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const STRING = block.getFieldValue('STRING');
-        return [`\'${STRING}\'`, javascriptGenerator.ORDER_ATOMIC];
+        return [`\'${STRING}\'`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}number`, {
@@ -37,7 +37,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const NUMBER = block.getFieldValue('NUMBER');
-        return [`${NUMBER}`, javascriptGenerator.ORDER_ATOMIC];
+        return [`${NUMBER}`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}nil`, {
@@ -48,7 +48,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const STRING = block.getFieldValue('STRING');
-        return [`nil`, javascriptGenerator.ORDER_ATOMIC];
+        return [`nil`, luaGenerator.ORDER_ATOMIC];
     });
 }
 

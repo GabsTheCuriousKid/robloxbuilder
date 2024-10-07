@@ -1,5 +1,5 @@
 import Blockly from "blockly/core";
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 
 function xmlToCode(xml) {
     // this sucks but i dont know any other method
@@ -20,7 +20,7 @@ function xmlToCode(xml) {
         const dom = Blockly.utils.xml.textToDom(xml);
         Blockly.Xml.domToWorkspace(dom, workspace);
         // yay we get to compile now
-        code = javascriptGenerator.workspaceToCode(workspace);
+        code = luaGenerator.workspaceToCode(workspace);
     } catch (err) {
         // we do try catch so if we fail to parse
         // we dont leave behind an entire workspace & div in the document

@@ -282,7 +282,7 @@
         const beautified = beautifyGeneratedCode(code);
         const highlighted = Prism.highlight(
             beautified,
-            Prism.languages.javascript
+            Prism.languages.lua
         );
         return highlighted;
     }
@@ -398,7 +398,7 @@
                                 "_"
                             );
                             const blob = new Blob([code], {
-                                type: "text/javascript;charset=UTF-8",
+                                type: "text/lua;charset=UTF-8",
                             });
                             FileSaver.saveAs(blob, filteredProjectName + ".js");
                         }}

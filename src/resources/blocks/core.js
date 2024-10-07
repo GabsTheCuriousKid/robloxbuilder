@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'core_';

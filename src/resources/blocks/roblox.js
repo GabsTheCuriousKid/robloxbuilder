@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'roblox_';
@@ -12,7 +12,7 @@ function register() {
         output: "String",
         colour: categoryColor
     }, (block) => {
-        return [`script.Parent`, javascriptGenerator.ORDER_ATOMIC];
+        return [`script.Parent`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}type`, {
@@ -37,9 +37,9 @@ function register() {
         output: "String",
         colour: categoryColor
     }, (block) => {
-        const OBJECT = javascriptGenerator.valueToCode(block, 'OBJECT', javascriptGenerator.ORDER_ATOMIC)
+        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
         const TYPE = block.getFieldValue('TYPE');
-        return [`${OBJECT}.${TYPE}`, javascriptGenerator.ORDER_ATOMIC];
+        return [`${OBJECT}.${TYPE}`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}getservice`, {
@@ -82,7 +82,7 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const SERVICE = block.getFieldValue('SERVICE');
-        return [`game:GetService('${SERVICE}')`, javascriptGenerator.ORDER_ATOMIC];
+        return [`game:GetService('${SERVICE}')`, luaGenerator.ORDER_ATOMIC];
     });
 }
 

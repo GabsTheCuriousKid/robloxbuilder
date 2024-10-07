@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'events_';
@@ -20,7 +20,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const Blocks = javascriptGenerator.statementToCode(block, 'CODE');
+        const Blocks = luaGenerator.statementToCode(block, 'CODE');
         
         const code = `game.Players.PlayerAdded:Connect(function(Player) ${Blocks} \nend)`;
         return `${code}\n`;

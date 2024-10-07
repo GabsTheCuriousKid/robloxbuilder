@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'control_';
@@ -19,7 +19,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const NUMBER = javascriptGenerator.valueToCode(block, 'NUMBER', javascriptGenerator.ORDER_ATOMIC)
+        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         
         const code = `task.wait(${NUMBER});`;
         return `${code}\n`;
@@ -40,7 +40,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const Blocks = javascriptGenerator.statementToCode(block, 'CODE');
+        const Blocks = luaGenerator.statementToCode(block, 'CODE');
         
         const code = `while true do\n${Blocks}end\n`;
         return `${code}\n`;

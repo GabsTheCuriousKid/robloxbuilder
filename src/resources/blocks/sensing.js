@@ -1,4 +1,4 @@
-import javascriptGenerator from '../javascriptGenerator';
+import luaGenerator from '../luaGenerator';
 import registerBlock from '../register';
 
 const categoryPrefix = 'sensing_';
@@ -19,7 +19,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const TEXT = javascriptGenerator.valueToCode(block, 'TEXT', javascriptGenerator.ORDER_ATOMIC)
+        const TEXT = luaGenerator.valueToCode(block, 'TEXT', luaGenerator.ORDER_ATOMIC)
         
         const code = `print(${TEXT});`;
         return `${code}\n`;
@@ -39,7 +39,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const TEXT = javascriptGenerator.valueToCode(block, 'TEXT', javascriptGenerator.ORDER_ATOMIC)
+        const TEXT = luaGenerator.valueToCode(block, 'TEXT', luaGenerator.ORDER_ATOMIC)
         
         const code = `warn(${TEXT});`;
         return `${code}\n`;
@@ -59,7 +59,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const TEXT = javascriptGenerator.valueToCode(block, 'TEXT', javascriptGenerator.ORDER_ATOMIC)
+        const TEXT = luaGenerator.valueToCode(block, 'TEXT', luaGenerator.ORDER_ATOMIC)
         
         const code = `error(${TEXT});`;
         return `${code}\n`;
