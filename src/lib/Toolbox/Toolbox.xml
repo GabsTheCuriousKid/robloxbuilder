@@ -35,4 +35,8 @@
         <block type="roblox_type" />
         <block type="roblox_getservice" />
     </category>
+    <category name="Lua Test" colour="#FF0000">
+        <block type="lua_wait" />
+        <block type="lua_whiletruedo" />
+    </category>
 </xml>

@@ -76,7 +76,7 @@ function register() {
         const FUNC = javascriptGenerator.statementToCode(block, 'FUNC');
         const SPACE = "\t "
         
-        const code = `local${SPACE}function ${ID}(${VALUES}) { ${FUNC} }`;
+        const code = `local${SPACE}function ${ID}(${VALUES}) \n${FUNC} \nend)`;
         return `${code}\n`;
     });
 

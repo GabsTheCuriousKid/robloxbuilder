@@ -22,7 +22,7 @@ function register() {
     }, (block) => {
         const Blocks = javascriptGenerator.statementToCode(block, 'CODE');
         
-        const code = `game.Players.PlayerAdded:connect(function(Player) ${Blocks}\nend)`;
+        const code = `game.Players.PlayerAdded:Connect(function(Player) ${Blocks} \nend)`;
         return `${code}\n`;
     });
 }
