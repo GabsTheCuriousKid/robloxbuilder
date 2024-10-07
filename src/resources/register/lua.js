@@ -4,7 +4,7 @@ import luaGenerator from '../luaGenerator';
 export default (blockName, jsonData, compileFunction) => {
     for (const property in jsonData) {
         if (['previousStatement', 'nextStatement'].includes(property) && jsonData[property] === null) {
-            jsonData[property] == 'Regular'
+            jsonData[property] = 'Regular'
         }
     }
 

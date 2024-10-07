@@ -1,50 +1,27 @@
+import registerBlock from '../register/lua';
 import luaGenerator from '../luaGenerator';
-import registerBlock from '../register/lua.js/lua.js';
 
 const categoryPrefix = 'lua_';
-const categoryColor = '#FF0000';
+const categoryColor = '#FFAB19';
 
-function register() {
-    registerBlock(`${categoryPrefix}wait`, {
-        message0: 'wait %1 secs',
-        args0: [
-            {
-                "type": "input_value",
-                "name": "NUMBER",
-                "check": "Number",
-            },
-        ],
-        nextStatement: null,
-        previousStatement: null,
-        inputsInline: true,
-        colour: categoryColor
-    }, (block) => {
-        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
-        
-        const code = `task.wait(${NUMBER});`;
-        return `${code}\n`;
-    });
+const blockName = `${categoryPrefix}wait`;
+const jsonData = {
+    message0: 'wait %1 seconds',
+    args0: [
+        {
+            type: 'input_value',
+            name: 'NUMBER',
+            check: 'Number',
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: categoryColor,
+};
 
-    registerBlock(`${categoryPrefix}whiletruedo`, {
-        message0: 'while true do %1 %2',
-        args0: [
-            {
-                "type": "input_dummy"
-            },
-            {
-                "type": "input_statement",
-                "name": "CODE"
-            }
-        ],
-        previousStatement: null,
-        inputsInline: true,
-        colour: categoryColor
-    }, (block) => {
-        const Blocks = luaGenerator.statementToCode(block, 'CODE');
-        
-        const code = `while true do\n${Blocks}end\n`;
-        return `${code}\n`;
-    });
-}
+const compileFunction = (block) => {
+    const number = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC);
+    return `task.wait(${number});\n`;
+};
 
-export default register;
+registerBlock(blockName, jsonData, compileFunction);
