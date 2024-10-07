@@ -46,23 +46,23 @@
     import registerGeneric from "../resources/blocks/generic.js";
     registerGeneric();
 
-    //import registerCore from "../resources/blocks/core.js";
-    //import registerEvents from "../resources/blocks/events.js";
-    //import registerControl from "../resources/blocks/control.js";
-    //import registerSensing from "../resources/blocks/sensing.js";
-    //import registerInputs from "../resources/blocks/inputs.js";
-    //import registerFuncs from "../resources/blocks/functions.js";
-    //import registerRoblox from "../resources/blocks/roblox.js";
-    import registerLua from "../resources/blocks/lua_test.js";
+    import registerCore from "../resources/blocks/core.js";
+    import registerEvents from "../resources/blocks/events.js";
+    import registerControl from "../resources/blocks/control.js";
+    import registerSensing from "../resources/blocks/sensing.js";
+    import registerInputs from "../resources/blocks/inputs.js";
+    import registerFuncs from "../resources/blocks/functions.js";
+    import registerRoblox from "../resources/blocks/roblox.js";
+    //import registerLua from "../resources/blocks/lua_test.js";
 
-    //registerCore();
-    //registerEvents();
-    //registerControl();
-    //registerSensing();
-    //registerInputs();
-    //registerFuncs();
-    //registerRoblox();
-    registerLua();
+    registerCore();
+    registerEvents();
+    registerControl();
+    registerSensing();
+    registerInputs();
+    registerFuncs();
+    registerRoblox();
+    //registerLua();
 
     const en = {
         rtl: false,
