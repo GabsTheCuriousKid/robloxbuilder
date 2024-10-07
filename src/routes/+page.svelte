@@ -53,7 +53,7 @@
     import registerInputs from "../resources/blocks/inputs.js";
     import registerFuncs from "../resources/blocks/functions.js";
     import registerRoblox from "../resources/blocks/roblox.js";
-    import registerLua from "../resources/blocks/lua_test.js";
+    // import registerLua from "../resources/blocks/lua_test.js";
 
     registerCore();
     registerEvents();
@@ -62,7 +62,7 @@
     registerInputs();
     registerFuncs();
     registerRoblox();
-    registerLua();
+    // registerLua();
 
     const en = {
         rtl: false,
@@ -282,7 +282,7 @@
         const beautified = beautifyGeneratedCode(code);
         const highlighted = Prism.highlight(
             beautified,
-            Prism.languages.lua
+            Prism.languages.javascript
         );
         return highlighted;
     }
