@@ -1,5 +1,5 @@
 <xml>
-    <category name="Events" colour="#FFBF00">
+    <!--<category name="Events" colour="#FFBF00">
         <block type="events_whenplayerjoins" />
     </category>
     <category name="Control" colour="#FFAB19">
@@ -34,9 +34,9 @@
         <block type="roblox_parent" />
         <block type="roblox_type" />
         <block type="roblox_getservice" />
-    </category>
-    <!--<category name="Lua Test" colour="#FF0000">
+    </category>-->
+    <category name="Lua Test" colour="#FF0000">
         <block type="lua_wait" />
         <block type="lua_whiletruedo" />
-    </category>-->
+    </category>
 </xml>
