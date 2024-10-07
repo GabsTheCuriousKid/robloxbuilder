@@ -24,4 +24,4 @@ const compileFunction = (block) => {
     return `task.wait(${number});\n`;
 };
 
-registerBlock(blockName, jsonData, compileFunction);
+export default registerBlock(blockName, jsonData, compileFunction);
