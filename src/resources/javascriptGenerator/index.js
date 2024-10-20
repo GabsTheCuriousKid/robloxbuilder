@@ -4,7 +4,7 @@
 
 // we COULD modify the javascript generator here
 // but its much cleaner to leave this alone
-import pkg from 'blockly/lua.js';
+import pkg from 'blockly/javascript.js';
 const { javascriptGenerator } = pkg;
 
 export default javascriptGenerator;

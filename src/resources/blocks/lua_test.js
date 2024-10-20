@@ -4,24 +4,26 @@ import luaGenerator from '../luaGenerator';
 const categoryPrefix = 'lua_';
 const categoryColor = '#FFAB19';
 
-const blockName = `${categoryPrefix}wait`;
-const jsonData = {
-    message0: 'wait %1 seconds',
-    args0: [
-        {
-            type: 'input_value',
-            name: 'NUMBER',
-            check: 'Number',
-        },
-    ],
-    previousStatement: null,
-    nextStatement: null,
-    colour: categoryColor,
-};
+function register() {
+    registerBlock(`${categoryPrefix}wait`, {
+        message0: 'wait %1 secs',
+        args0: [
+            {
+                "type": "input_value",
+                "name": "NUMBER",
+                "check": "Number",
+            },
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
+        
+        const code = `task.wait(${NUMBER});`;
+        return `${code}\n`;
+    });
+}
 
-const compileFunction = (block) => {
-    const number = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC);
-    return `task.wait(${number});\n`;
-};
-
-export default registerBlock(blockName, jsonData, compileFunction);
+export default register();
