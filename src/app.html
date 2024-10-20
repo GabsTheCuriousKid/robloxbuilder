@@ -117,7 +117,83 @@
 				<img width="24" height="24" src="/images/close.svg">
 			</button>
 		</div>
-        <p>RobloxBuilder will be down for now because the singular developer of RobloxBuilder is attempting to change the javascript generators into lua code generators despite the lack of knowledge.</p>
-		<div>%sveltekit.body%</div>
+		<script>
+			// reset events
+			window.tbevents_ = [];
+
+			// if localhost, get rid of the alert
+			const isLocalHost = location.hostname === 'localhost';
+			if (isLocalHost) {
+				const alert = document.getElementById('Zm5BSEgzQW5HeW9yZkFkNEhpbGJiamtpZmdoOGNDc2lMR29JSzF0K2JnPT0=');
+				alert.remove();
+			}
+
+			// prism styles
+			const prismStyles = {
+				light: null,
+				dark: null
+			};
+			const getPrismStyleUrl_ = (id) => {
+				switch (id) {
+					case 'light':
+						return 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css'; 
+					case 'dark':
+						return 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css'; 
+					default:
+						return ''; 
+				}
+			};
+			const loadPrismStyle_ = (id) => {
+				const url = getPrismStyleUrl_(id);
+				console.log('grabbing prism style for', id);
+				return fetch(url);
+			};
+
+			// handle theme updating
+			const head = document.head;
+			const body = document.body;
+			const updateTheme = async () => {
+				// update body
+				const mode = localStorage.getItem('tb:theme');
+				if (mode === 'dark') {
+					body.setAttribute("class", "dark");
+					body.style.background = "#111";
+				} else {
+					body.setAttribute("class", "light");
+					body.style.background = "";
+				}
+				// update head
+				const styleElement = document.getElementById("XTI0GZwZotMzDMi0wcGctLFttIWctMdtLPXI9M0aGGDQyMHRpMViW3E=");
+				let promise;
+				let styleCode = '';
+				let styleId = 'dark';
+				if (mode === 'dark') {
+					styleCode = prismStyles.dark;
+					if (!prismStyles.dark) promise = loadPrismStyle_('dark');
+				} else {
+					styleId = 'light';
+					styleCode = prismStyles.light;
+					if (!prismStyles.light) promise = loadPrismStyle_('light');
+				}
+				if (promise) {
+					const res = await promise;
+					const text = await res.text();
+					styleCode = text;
+					prismStyles[styleId] = styleCode;
+				}
+				styleElement.innerHTML = styleCode;
+			};
+
+			window.themeUpdated_ = () => {
+				updateTheme();
+				for (const event in window.tbevents_) {
+					if (event.type === 'THEME') {
+						event.callback();
+					}
+				}
+			};
+			updateTheme();
+		</script>
+		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

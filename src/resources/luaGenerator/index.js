@@ -1,4 +1,4 @@
-import * as Blockly from 'blockly/core';
+import Blockly from 'blockly/blockly';
+import 'blockly/lua_compressed.js';
 
-const luaGenerator = new Blockly.Generator('lua');
-export default luaGenerator;
+export default Blockly
