@@ -20,7 +20,7 @@
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
 
-    import Blockly from "blockly/core";
+    import Blockly from "blockly";
     import * as ContinuousToolboxPlugin from "@blockly/continuous-toolbox";
     import "@blockly/field-colour-hsv-sliders";
 
