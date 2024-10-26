@@ -34,8 +34,15 @@
         <block type="roblox_parent" />
         <block type="roblox_type" />
         <block type="roblox_getservice" />
-    </category>
-    <category name="Lua Test" colour="#FF0000">
-        <block type="lua_wait" />
     </category>-->
+    <category name="News" colour="#FF0000">
+        <label text="Robloxbuilder is down."></label>
+        <sep gap="48" />
+        <label text="During the attempts of"></label>
+        <label text="turning the JavaScript Generators"></label>
+        <label text="into Lua Generators,"></label>
+        <label text="Everything broke."></label>
+        <label text="This is what remains"></label>
+        <label text="of RobloxBuilder"></label>
+    </category>
 </xml>
