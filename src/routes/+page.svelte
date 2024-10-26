@@ -105,14 +105,36 @@
 
     let luaLoaded = false;
 
+    function updateGeneratedCode() {
+        extensionMetadata.name = "Extension";
+        extensionMetadata.id = "extensionID";
+        if (projectName) {
+            extensionMetadata.name = projectName;
+        }
+        if (projectID) {
+            extensionMetadata.id = projectID;
+        }
+        const code = compiler.compile(
+            workspace,
+            extensionMetadata
+        );
+        lastGeneratedCode = code;
+    }
+
     import pkg from '@blockly/workspace-minimap';
     const { PositionedMinimap } = pkg;
     onMount(() => {
         console.log("ignore the warnings above we dont care about those");
 
         window.onbeforeunload = () => "";
+        if (!luaLoaded) {
+            const loadLanguages = require("prismjs/components/")
+            loadLanguages(['lua']);
+            luaLoaded = true;
+        }
         compiler = new Compiler(workspace);
         // workspace was changed
+        workspace.addChangeListener(updateGeneratedCode);
 
         EventManager.allowAttachment();
         EventManager.on(EventManager.EVENT_THEME_CHANGED, () => {
@@ -144,16 +166,12 @@
     function discordInvite() {
         window.open("https://discord.gg/eVQdK8csJc")
     }
-    
-    function Test() {
-        document.getElementById("lua_code").innerHTML = "Test"
-    }
 </script>
 
 <NavigationBar>
     <NavigationButton on:click={discordInvite}>Discord</NavigationButton>
     <NavigationDivider />
-    <NavigationButton on:click={Test}>Save</NavigationButton>
+    <NavigationButton on:click={discordInvite}>Save</NavigationButton>
     <NavigationButton on:click={discordInvite}>Load</NavigationButton>
     <NavigationDivider />
     <input
@@ -185,7 +203,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        <p id="lua_code">Code is not available right now</p>
+                        {@html displayGeneratedCode(lastGeneratedCode)}
                     </div>
                 </div>
             </div>
