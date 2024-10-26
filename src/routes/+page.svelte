@@ -138,7 +138,7 @@
                 console.log("Lua language loaded");
                 luaLoaded = true;
             });
-            .catch((error) => console.error("Failed to load Prism languages:", error));
+            .catch((error) => console.error("Failed to load Prism languages"));
         }
         compiler = new Compiler(workspace);
         // workspace was changed
