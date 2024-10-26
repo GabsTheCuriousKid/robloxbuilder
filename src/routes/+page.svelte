@@ -16,7 +16,7 @@
     import JSZip from "jszip";
     import beautify from "js-beautify";
     import Prism from "prismjs";
-    import { loadLanguages } from "prismjs/components/"
+    import loadLanguages from "prismjs/components/"
     import * as FileSaver from "file-saver";
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
@@ -44,11 +44,7 @@
     import preload from "../resources/preload";
 
     // Blocks
-    import registerGeneric from "../resources/blocks/generic.js";
-    registerGeneric();
-
     import registerLua from "../resources/blocks/lua_test.js";
-
     registerLua();
 
     const en = {
