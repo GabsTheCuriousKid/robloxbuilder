@@ -144,8 +144,12 @@
 
     import pkg from '@blockly/workspace-minimap';
     const { PositionedMinimap } = pkg;
-    onMount(() => {
-        loadLanguages(['lua']);
+    onMount(async () => {
+        try {
+            await loadLanguages(['lua', 'javascript']);
+        } catch (error) {
+            console.error("Error loading languages:", error);
+        }
         console.log("ignore the warnings above we dont care about those");
 
         window.onbeforeunload = () => "";
