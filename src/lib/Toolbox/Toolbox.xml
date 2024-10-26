@@ -1,31 +1,4 @@
-<xml><!--
-    
-    
-    
-    <category name="Functions" colour="#FF4B4B">
-        <block type="funcs_function" />
-        <block type="funcs_localfunction" />
-        <block type="funcs_call" />
-        <block type="funcs_callreporter" />
-        <sep gap="48" />
-        <block type="funcs_local" />
-        <block type="funcs_localnoeq" />
-        <block type="funcs_localtable" />
-        <sep gap="48" />
-        <block type="funcs_raw" />
-        <block type="funcs_return" />
-    </category>
-    <category name="Roblox" colour="#000000">
-        <block type="roblox_parent" />
-        <block type="roblox_type" />
-        <block type="roblox_getservice" />
-    </category>-->
-    <category name="News" colour="#FF0000">
-        <label text="Robloxbuilder is down."></label>
-        <label text="Although the Blocks are"></label>
-        <label text="back, i couldn't get"></label>
-        <label text="the prismjs to work."></label>
-    </category>
+<xml>
     <category name="Events" colour="#FFBF00">
         <block type="events_whenplayerjoins" />
     </category>
@@ -43,5 +16,23 @@
         <block type="inputs_string" />
         <block type="inputs_number" />
         <block type="inputs_nil" />
+    </category>
+    <category name="Functions" colour="#FF4B4B">
+        <block type="funcs_function" />
+        <block type="funcs_localfunction" />
+        <block type="funcs_call" />
+        <block type="funcs_callreporter" />
+        <sep gap="48" />
+        <block type="funcs_local" />
+        <block type="funcs_localnoeq" />
+        <block type="funcs_localtable" />
+        <sep gap="48" />
+        <block type="funcs_raw" />
+        <block type="funcs_return" />
+    </category>
+    <category name="Roblox" colour="#000000">
+        <block type="roblox_parent" />
+        <block type="roblox_type" />
+        <block type="roblox_getservice" />
     </category>
 </xml>

@@ -45,10 +45,14 @@
     import registerControl from "../resources/blocks/control.js";
     import registerSensing from "../resources/blocks/sensing.js";
     import registerInputs from "../resources/blocks/inputs.js";
+    import registerFunctions from "../resources/blocks/functions.js";
+    import registerRoblox from "../resources/blocks/roblox.js";
     registerEvents();
     registerControl();
     registerSensing();
     registerInputs();
+    registerFunctions();
+    registerRoblox();
 
     const en = {
         rtl: false,

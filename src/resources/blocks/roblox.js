@@ -19,14 +19,14 @@ function register() {
         message0: '%1 \'s %2',
         args0: [
             {
-                "type": "input_value",
-                "name": "OBJECT",
-                "check": "String",
+                type: "input_value",
+                name: "OBJECT",
+                check: "String",
             },
             {
-                "type": "field_dropdown",
-                "name": "TYPE",
-                "options": [
+                type: "field_dropdown",
+                name: "TYPE",
+                options: [
                     [ "name", "Name" ],
                     [ "classname", "ClassName" ],
                     [ "parent", "Parent" ],
@@ -46,9 +46,9 @@ function register() {
         message0: 'Get Service %1',
         args0: [
             {
-                "type": "field_dropdown",
-                "name": "SERVICE",
-                "options": [
+                type: "field_dropdown",
+                name: "SERVICE",
+                options: [
                     [ "Ad Service", "AdService" ],
                     [ "Asset Service", "AssetService" ],
                     [ "Analytics Service", "AnalyticsService" ],
