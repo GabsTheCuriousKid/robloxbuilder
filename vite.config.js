@@ -6,10 +6,14 @@ export default defineConfig({
 	resolve: {
         alias: {
             'blockly': 'blockly/core',
+			'@blockly/continuous-toolbox': '@blockly/continuous-toolbox',
+            'blockly/msg/en': 'blockly/msg/en',
         }
     },
 	optimizeDeps: {
 		include: [
+			'blockly',
+			'blockly/msg/en',
 			'@blockly/continuous-toolbox',
 			'file-saver',
 		]

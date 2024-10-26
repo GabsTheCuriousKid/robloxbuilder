@@ -1,5 +1,6 @@
 import registerBlock from '../register/lua';
-import luaGenerator from '../luaGenerator';
+import * as Blockly from 'blockly/core';
+import {luaGenerator, Order} from 'blockly/lua';
 
 const categoryPrefix = 'lua_';
 const categoryColor = '#FFAB19';
@@ -19,7 +20,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
+        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.Order.ATOMIC)
         
         const code = `task.wait(${NUMBER});`;
         return `${code}\n`;
