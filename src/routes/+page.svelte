@@ -13,6 +13,7 @@
     import JSZip from "jszip";
     import beautify from "js-beautify";
     import Prism from "prismjs";
+    import 'prismjs/components/prism-lua.min.js';
     import * as FileSaver from "file-saver";
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
