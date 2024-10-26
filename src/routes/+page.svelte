@@ -98,13 +98,13 @@
     import pkg from '@blockly/workspace-minimap';
 
     onMount(() => {
-        console.log("ignore the warnings above we dont care about those");
-
         if (!luaLoaded) {
             const loadLanguages = require("prismjs/components/");
             loadLanguages(['lua']);
             luaLoaded = true;
         }
+        
+        console.log("ignore the warnings above we dont care about those");
 
         window.onbeforeunload = () => "";
         compiler = new Compiler(workspace);
@@ -172,6 +172,11 @@
             <div class="row-subsubmenus">
                 <div class="codeActionsWrapper">
                     <p style="margin-right: 12px"><b>Generated Code</b></p>
+                </div>
+                <div class="codeWrapper">
+                    <div class="codeDisplay">
+                        {@html displayGeneratedCode(lastGeneratedCode)}
+                    </div>
                 </div>
             </div>
         </div>
