@@ -20,7 +20,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.Order.ATOMIC)
+        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         
         const code = `task.wait(${NUMBER});`;
         return `${code}\n`;
