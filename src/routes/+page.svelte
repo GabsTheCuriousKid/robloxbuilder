@@ -7,10 +7,33 @@
     import NavigationButton from "$lib/NavigationBar/Button.svelte";
     import StyledButton from "$lib/StyledComponents/ToolboxButton.svelte";
 
+    // Toolbox
+    import Toolbox from "$lib/Toolbox/Toolbox.xml?raw";
+
+    import EventManager from "../resources/events";
+
+    import BlocklyComponent from "svelte-blockly";
+
+    import Compiler from "../resources/compiler";
+    import preload from "../resources/preload";
+
+    let workspace;
+    let compiler;
+    let projectName = "";
+    let projectID = "";
+    let lastGeneratedCode = "";
+
     onMount(() => {
         console.log("ignore the warnings above we dont care about those");
 
         window.onbeforeunload = () => "";
+        compiler = new Compiler(workspace);
+        // workspace was changed
+
+        EventManager.allowAttachment();
+        EventManager.on(EventManager.EVENT_THEME_CHANGED, () => {
+            workspace.refreshTheme();
+        });
     });
 
     function discordInvite() {
@@ -21,8 +44,8 @@
 <NavigationBar>
     <NavigationButton on:click={discordInvite}>Discord</NavigationButton>
     <NavigationDivider />
-    <NavigationButton on:click={}>Save</NavigationButton>
-    <NavigationButton on:click={}>Load</NavigationButton>
+    <NavigationButton on:click={discordInvite}>Save</NavigationButton>
+    <NavigationButton on:click={discordInvite}>Load</NavigationButton>
     <NavigationDivider />
     <input
         class="project-name"
