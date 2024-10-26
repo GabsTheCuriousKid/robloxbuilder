@@ -133,9 +133,10 @@
 
         window.onbeforeunload = () => "";
         if (!luaLoaded) {
-            const loadLanguages = require("prismjs/components/")
-            loadLanguages(['lua']);
-            luaLoaded = true;
+            import("prismjs/components/").then((module) => {
+                module.default(['lua']);
+                luaLoaded = true;
+            });
         }
         compiler = new Compiler(workspace);
         // workspace was changed
@@ -189,6 +190,7 @@
         placeholder="Script Name (ex: Script)"
         style="margin-left:4px;margin-right:4px"
         bind:value={projectName}
+        on:change={updateGeneratedCode}
     />
 </NavigationBar>
 <div class="main">
