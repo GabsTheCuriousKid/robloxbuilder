@@ -13,7 +13,6 @@
     import JSZip from "jszip";
     import beautify from "js-beautify";
     import Prism from "prismjs";
-    const loadLanguages = require("prismjs/components/");
     import * as FileSaver from "file-saver";
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
@@ -102,8 +101,8 @@
         console.log("ignore the warnings above we dont care about those");
 
         if (!luaLoaded) {
-            //const loadLanguages = require("prismjs/components/");
-            //loadLanguages(['lua']);
+            const loadLanguages = require("prismjs/components/");
+            loadLanguages(['lua']);
             luaLoaded = true;
         }
 
