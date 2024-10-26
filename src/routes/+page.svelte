@@ -135,7 +135,7 @@
         if (!luaLoaded) {
             import("prismjs/components/").then((module) => {
                 module.default(['lua']);
-                console.log("Lua language loaded:", Prism.languages.lua);
+                console.log("Lua language loaded");
                 luaLoaded = true;
             });
             .catch((error) => console.error("Failed to load Prism languages:", error));
