@@ -11,6 +11,9 @@
     import Toolbox from "$lib/Toolbox/Toolbox.xml?raw";
 
     import JSZip from "jszip";
+    import beautify from "js-beautify";
+    import Prism from "prismjs";
+    const loadLanguages = require("prismjs/components/");
     import * as FileSaver from "file-saver";
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
@@ -106,6 +109,26 @@
         });
     });
 
+    // code display & handling
+    function beautifyGeneratedCode(code) {
+        const beautified = beautify.js(code, {
+            indent_size: 4,
+            space_in_empty_paren: true,
+        });
+        return beautified;
+    }
+    
+    function displayGeneratedCode(code) {
+        loadLanguages(['lua']);
+        const beautified = beautifyGeneratedCode(code);
+        const highlighted = Prism.highlight(
+            beautified,
+            Prism.languages.lua,
+            'lua'
+        );
+        return highlighted;
+    }
+
     function discordInvite() {
         window.open("https://discord.gg/eVQdK8csJc")
     }
@@ -139,6 +162,16 @@
             <div class="assetsWrapper">
                 <h1>Assets</h1>
                 <p>There's currently nothing to change here yet.</p>
+            </div>
+            <div class="row-subsubmenus">
+                <div class="codeActionsWrapper">
+                    <p style="margin-right: 12px"><b>Generated Code</b></p>
+                </div>
+                <div class="codeWrapper">
+                    <div class="codeDisplay">
+                        {@html displayGeneratedCode(lastGeneratedCode)}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

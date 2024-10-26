@@ -268,6 +268,7 @@
     }
     
     function displayGeneratedCode(code) {
+        loadLanguages(['lua']);
         const beautified = beautifyGeneratedCode(code);
         const highlighted = Prism.highlight(
             beautified,
