@@ -16,9 +16,10 @@ function register() {
                 name: 'CODE',
             }
         ],
+        previousStatement: null,
         nextStatement: null,
         inputsInline: true,
-        colour: categoryColor
+        colour: categoryColor,
     }, (block) => {
         const Blocks = luaGenerator.statementToCode(block, 'CODE');
         

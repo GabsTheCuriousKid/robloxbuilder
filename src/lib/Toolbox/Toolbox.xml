@@ -1,11 +1,7 @@
 <xml><!--
     
     
-    <category name="Sensing" colour="#5CB1D6">
-        <block type="sensing_print" />
-        <block type="sensing_warn" />
-        <block type="sensing_error" />
-    </category>
+    
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
         <block type="funcs_localfunction" />
@@ -37,6 +33,11 @@
         <block type="control_wait" />
         <sep gap="48" />
         <block type="control_whiletruedo" />
+    </category>
+    <category name="Sensing" colour="#5CB1D6">
+        <block type="sensing_print" />
+        <block type="sensing_warn" />
+        <block type="sensing_error" />
     </category>
     <category name="Inputs" colour="#FF6680">
         <block type="inputs_string" />
