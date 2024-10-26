@@ -175,7 +175,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        {@html displayGeneratedCode(lastGeneratedCode)}
+                        {@html displayGeneratedCode("-- this is a test")}
                     </div>
                 </div>
             </div>
