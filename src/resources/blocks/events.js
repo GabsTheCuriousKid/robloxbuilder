@@ -21,7 +21,7 @@ function register() {
     }, (block) => {
         const Blocks = luaGenerator.statementToCode(block, 'CODE');
         
-        const code = `game.Players.PlayerAdded:Connect(function(Player)\n${Blocks}\nend)`;
+        const code = `game.Players.PlayerAdded:Connect(function(Player)\n${Blocks}end)`;
         return `${code}\n`;
     });
 }

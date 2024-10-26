@@ -74,9 +74,8 @@ function register() {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || ''
         const FUNC = luaGenerator.statementToCode(block, 'FUNC');
-        const SPACE = "\t "
         
-        const code = `local${SPACE}function ${ID}(${VALUES}) \n${FUNC} \nend)`;
+        const code = `local function ${ID}(${VALUES}) ${FUNC} \nend)`;
         return `${code}\n`;
     });
 
@@ -156,7 +155,7 @@ function register() {
         const Name = block.getFieldValue('LOCALNAME')
         const Definition = luaGenerator.valueToCode(block, 'DEFINE', luaGenerator.ORDER_ATOMIC)
         
-        const code = `local\t ${Name} = ${Definition}`;
+        const code = `local ${Name} = ${Definition}`;
         return `${code}\n`;
     });
 
@@ -177,7 +176,7 @@ function register() {
     }, (block) => {
         const Name = block.getFieldValue('LOCALNAME')
         
-        const code = `local\t ${Name}`;
+        const code = `local ${Name}`;
         return `${code}\n`;
     });
 
@@ -206,7 +205,7 @@ function register() {
         const Name = block.getFieldValue('LOCALNAME')
         const Table = luaGenerator.statementToCode(block, 'TABLE');
         
-        const code = `local\t ${Name} = {${Table}}`;
+        const code = `local ${Name} = {${Table}}`;
         return `${code}\n`;
     });
 

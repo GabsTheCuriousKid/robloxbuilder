@@ -134,8 +134,6 @@
     import pkg from '@blockly/workspace-minimap';
     const { PositionedMinimap } = pkg;
     onMount(() => {
-        console.log("ignore the warnings above we dont care about those");
-
         window.onbeforeunload = () => "";
         if (!luaLoaded) {
             import("prismjs/components/").then((module) => {
@@ -145,6 +143,8 @@
             })
             .catch((error) => console.error("Failed to load Prism languages:", error));
         }
+        console.log("ignore the warnings and errors above we dont care about those");
+
         compiler = new Compiler(workspace);
         // workspace was changed
         workspace.addChangeListener(updateGeneratedCode);
