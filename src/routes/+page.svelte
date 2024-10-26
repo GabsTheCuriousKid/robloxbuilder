@@ -135,10 +135,10 @@
         if (!luaLoaded) {
             import("prismjs/components/").then((module) => {
                 module.default(['lua']);
-                console.log("Lua language loaded");
+                console.log("Lua language loaded:", Prism.languages.lua);
                 luaLoaded = true;
-            });
-            .catch((error) => console.error("Failed to load Prism languages"));
+            })
+            .catch((error) => console.error("Failed to load Prism languages:", error));
         }
         compiler = new Compiler(workspace);
         // workspace was changed
