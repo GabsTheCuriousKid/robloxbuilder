@@ -39,10 +39,6 @@
     import Compiler from "../resources/compiler";
     import preload from "../resources/preload";
 
-    // Blocks
-    import registerLua from "../resources/blocks/lua_test.js";
-    registerLua();
-
     const en = {
         rtl: false,
         msg: {
@@ -102,12 +98,6 @@
     import pkg from '@blockly/workspace-minimap';
 
     onMount(() => {
-        if (!luaLoaded) {
-            const loadLanguages = require("prismjs/components/");
-            loadLanguages(['lua']);
-            luaLoaded = true;
-        }
-        
         console.log("ignore the warnings above we dont care about those");
 
         window.onbeforeunload = () => "";
@@ -178,7 +168,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        <p id="lua_code">Code is not available right now<p>
+                        <p id="lua_codeScript">Code is not available right now<p>
                     </div>
                 </div>
             </div>
