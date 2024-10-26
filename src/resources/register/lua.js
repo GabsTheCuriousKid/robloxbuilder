@@ -1,5 +1,5 @@
 import Blockly from 'blockly/core';
-import {luaGenerator, Order} from 'blockly/lua';
+import luaGenerator from '../luaGenerator';
 
 export default (blockName, jsonData, compileFunction) => {
     for (const property in jsonData) {

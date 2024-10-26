@@ -9,32 +9,32 @@ function register() {
         message0: '\'%1\'',
         args0: [
             {
-                "type": "field_input",
-                "name": "STRING",
-                "text": "hello world",
-                "spellcheck": false
+                type: 'field_input',
+                name: 'STRING',
+                text: 'hello world',
+                spellcheck: false,
             },
         ],
         inputsInline: true,
-        output: "String",
-        colour: categoryColor
+        output: 'String',
+        colour: categoryColor,
     }, (block) => {
         const STRING = block.getFieldValue('STRING');
-        return [`\'${STRING}\'`, luaGenerator.ORDER_ATOMIC];
+        return [`'${STRING}'`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}number`, {
-        message0: '\(%1\)',
+        message0: '(%1)',
         args0: [
             {
-                "type": "field_number",
-                "name": "NUMBER",
-                "value": 0,
+                type: 'field_number',
+                name: 'NUMBER',
+                value: 0,
             },
         ],
         inputsInline: true,
-        output: "Number",
-        colour: categoryColor
+        output: 'Number',
+        colour: categoryColor,
     }, (block) => {
         const NUMBER = block.getFieldValue('NUMBER');
         return [`${NUMBER}`, luaGenerator.ORDER_ATOMIC];
@@ -44,10 +44,9 @@ function register() {
         message0: 'nil',
         args0: [],
         inputsInline: true,
-        output: "String",
-        colour: categoryColor
+        output: 'String',
+        colour: categoryColor,
     }, (block) => {
-        const STRING = block.getFieldValue('STRING');
         return [`nil`, luaGenerator.ORDER_ATOMIC];
     });
 }
