@@ -38,7 +38,7 @@ function register() {
         const VALUES = block.getFieldValue('VALUES') || ''
         const FUNC = luaGenerator.statementToCode(block, 'FUNC');
         
-        const code = `function ${ID}(${VALUES}) { ${FUNC} }`;
+        const code = `function ${ID}(${VALUES}) \n${FUNC} end)`;
         return `${code}\n`;
     });
 
@@ -74,8 +74,7 @@ function register() {
         const ID = block.getFieldValue('ID')
         const VALUES = block.getFieldValue('VALUES') || ''
         const FUNC = luaGenerator.statementToCode(block, 'FUNC');
-        
-        const code = `local function ${ID}(${VALUES}) ${FUNC} \nend)`;
+        const code = `local function ${ID}(${VALUES}) \n${FUNC} end)`;
         return `${code}\n`;
     });
 
