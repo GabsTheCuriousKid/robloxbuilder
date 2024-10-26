@@ -137,6 +137,8 @@
     function discordInvite() {
         window.open("https://discord.gg/eVQdK8csJc")
     }
+
+    document.getElementById("lua_code").innerHTML = displayGeneratedCode("-- this is a test")
 </script>
 
 <NavigationBar>
@@ -174,7 +176,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        <p id="lua">Template<p>
+                        <p id="lua_code">Template<p>
                     </div>
                 </div>
             </div>
