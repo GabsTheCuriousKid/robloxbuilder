@@ -102,8 +102,8 @@
         console.log("ignore the warnings above we dont care about those");
 
         if (!luaLoaded) {
-            const loadLanguages = require("prismjs/components/");
-            loadLanguages(['lua']);
+            //const loadLanguages = require("prismjs/components/");
+            //loadLanguages(['lua']);
             luaLoaded = true;
         }
 
