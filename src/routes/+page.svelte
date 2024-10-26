@@ -10,12 +10,43 @@
     // Toolbox
     import Toolbox from "$lib/Toolbox/Toolbox.xml?raw";
 
+    import JSZip from "jszip";
+    import * as FileSaver from "file-saver";
+    import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
+
+    import Blockly from "blockly/core";
+    import * as ContinuousToolboxPlugin from "@blockly/continuous-toolbox";
+    import "@blockly/field-colour-hsv-sliders";
+
+    const Theme = Blockly.Theme.defineTheme("BasicTheme", {
+        base: Blockly.Themes.Classic,
+        fontStyle: {
+            family: '"Source Code Pro", monospace',
+            weight: "700",
+            size: 12,
+        },
+        startHats: true,
+    });
+
+    import En from "blockly/msg/en";
+    import "blockly/blocks";
 
     import BlocklyComponent from "svelte-blockly";
 
     import Compiler from "../resources/compiler";
     import preload from "../resources/preload";
+
+    const en = {
+        rtl: false,
+        msg: {
+            ...En,
+        },
+    };
+
+    import customRenderer from "../resources/renderer"
+    Blockly.blockRendering.unregister('custom_renderer') //weird bug
+    Blockly.blockRendering.register('custom_renderer', customRenderer)
 
     let workspace;
     let compiler;
