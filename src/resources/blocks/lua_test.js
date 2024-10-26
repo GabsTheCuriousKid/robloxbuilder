@@ -1,6 +1,6 @@
 import registerBlock from '../register/lua';
 import * as Blockly from 'blockly/core';
-import {luaGenerator, Order} from 'blockly/lua';
+import luaGenerator from '../luaGenerator';
 
 const categoryPrefix = 'lua_';
 const categoryColor = '#FFAB19';

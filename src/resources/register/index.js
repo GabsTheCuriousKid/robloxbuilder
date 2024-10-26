@@ -1,5 +1,5 @@
-import Blockly from 'blockly';
-import luaGenerator from '../luaGenerator';
+import Blockly from 'blockly/core';
+import javascriptGenerator from '../javascriptGenerator';
 
 export default (blockName, jsonData, compileFunction) => {
     for (const property in jsonData) {
@@ -18,5 +18,5 @@ export default (blockName, jsonData, compileFunction) => {
     Blockly.Blocks[blockName] = blockObject
 
     // register block compile function
-    luaGenerator[blockName] = compileFunction;
+    javascriptGenerator[blockName] = compileFunction;
 }

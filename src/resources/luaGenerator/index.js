@@ -1,5 +1,3 @@
-import Blockly from 'blockly/blockly';
-import 'blockly/lua_compressed.js';
-const luaGenerator = Blockly;
+import {luaGenerator} from 'blockly/lua';
 
 export default luaGenerator

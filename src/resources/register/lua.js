@@ -1,4 +1,4 @@
-import Blockly from 'blockly';
+import Blockly from 'blockly/core';
 import {luaGenerator, Order} from 'blockly/lua';
 
 export default (blockName, jsonData, compileFunction) => {

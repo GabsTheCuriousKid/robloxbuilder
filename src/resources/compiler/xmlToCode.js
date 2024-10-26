@@ -1,4 +1,4 @@
-import Blockly from "blockly";
+import Blockly from "blockly/core";
 import luaGenerator from '../luaGenerator';
 
 function xmlToCode(xml) {
