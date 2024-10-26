@@ -131,13 +131,16 @@
     function discordInvite() {
         window.open("https://discord.gg/eVQdK8csJc")
     }
-    document.getElementById("lua_code").innerHTML = "Test"
+    
+    function Test() {
+        document.body.getElementById("lua_code").innerHTML = "Test"
+    }
 </script>
 
 <NavigationBar>
     <NavigationButton on:click={discordInvite}>Discord</NavigationButton>
     <NavigationDivider />
-    <NavigationButton on:click={discordInvite}>Save</NavigationButton>
+    <NavigationButton on:click={Test}>Save</NavigationButton>
     <NavigationButton on:click={discordInvite}>Load</NavigationButton>
     <NavigationDivider />
     <input
