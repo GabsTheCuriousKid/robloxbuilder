@@ -48,11 +48,50 @@
     Blockly.blockRendering.unregister('custom_renderer') //weird bug
     Blockly.blockRendering.register('custom_renderer', customRenderer)
 
+    const config = {
+        toolbox: Toolbox,
+        collapse: true,
+        comments: true,
+        scrollbars: true,
+        disable: false,
+        theme: Theme,
+        renderer: "custom_renderer",
+        grid: {
+            spacing: 25,
+            length: 3,
+            colour: "#00000011",
+            snap: false,
+        },
+        zoom: {
+            controls: true,
+            wheel: false,
+            startScale: 0.8,
+            maxScale: 4,
+            minScale: 0.25,
+            scaleSpeed: 1.1,
+        },
+        plugins: {
+            toolbox: ContinuousToolboxPlugin.ContinuousToolbox,
+            flyoutsVerticalToolbox: ContinuousToolboxPlugin.ContinuousFlyout,
+            metricsManager: ContinuousToolboxPlugin.ContinuousMetrics,
+        },
+        move: {
+            scrollbars: {
+                horizontal: true,
+                vertical: true,
+            },
+            drag: true,
+            wheel: true,
+        },
+    };
+
     let workspace;
     let compiler;
     let projectName = "";
     let projectID = "";
     let lastGeneratedCode = "";
+
+    import pkg from '@blockly/workspace-minimap';
 
     onMount(() => {
         console.log("ignore the warnings above we dont care about those");
@@ -86,7 +125,24 @@
         bind:value={projectName}
     />
 </NavigationBar>
-
+<div class="main">
+    <div class="row-menus">
+        <div class="row-first-submenus">
+            <div class="blockMenuButtons">
+                
+            </div>
+            <div class="blocklyWrapper">
+                <BlocklyComponent {config} locale={en} bind:workspace />
+            </div>
+        </div>
+        <div class="row-submenus">
+            <div class="assetsWrapper">
+                <h1>Assets</h1>
+                <p>There's currently nothing to change here yet.</p>
+            </div>
+        </div>
+    </div>
+</div>
 <style>
     :root {
         --nav-height: 3rem;
