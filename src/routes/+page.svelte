@@ -39,6 +39,10 @@
     import Compiler from "../resources/compiler";
     import preload from "../resources/preload";
 
+    // Blocks
+    import registerLua from "../resources/blocks/lua_test.js";
+    registerLua();
+
     const en = {
         rtl: false,
         msg: {
@@ -137,8 +141,6 @@
     function discordInvite() {
         window.open("https://discord.gg/eVQdK8csJc")
     }
-
-    //document.getElementById("lua_code").innerHTML = "this is a test"
 </script>
 
 <NavigationBar>
@@ -176,7 +178,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        <p id="lua_code">Template<p>
+                        <p id="lua_code">Code is not available right now<p>
                     </div>
                 </div>
             </div>
