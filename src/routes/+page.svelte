@@ -133,7 +133,7 @@
     }
     
     function Test() {
-        document.body.getElementById("lua_code").innerHTML = "Test"
+        document.getElementById("lua_code").innerHTML = "Test"
     }
 </script>
 
