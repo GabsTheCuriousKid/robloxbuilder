@@ -126,7 +126,6 @@
     }
     
     function displayGeneratedCode(code) {
-        const beautified = beautifyGeneratedCode();
         const highlighted = Prism.highlight(
             code,
             Prism.languages.lua,
@@ -175,7 +174,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        {@html displayGeneratedCode("-- this is a test")}
+                        <p id="lua">Template<p>
                     </div>
                 </div>
             </div>
