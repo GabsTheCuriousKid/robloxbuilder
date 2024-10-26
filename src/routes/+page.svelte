@@ -168,7 +168,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        <p id="lua_codeScript">Code is not available right now<p>
+                        <p id="lua_code">Code is not available right now<p>
                     </div>
                 </div>
             </div>
