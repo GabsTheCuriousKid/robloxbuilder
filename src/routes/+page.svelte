@@ -44,6 +44,9 @@
     import registerControl from "../resources/blocks/control.js";
     import registerSensing from "../resources/blocks/sensing.js";
     import registerInputs from "../resources/blocks/inputs.js";
+    registerEvents();
+    registerControl();
+    registerSensing();
     registerInputs();
 
     const en = {
