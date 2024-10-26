@@ -1,12 +1,6 @@
 <xml><!--
-    <category name="Events" colour="#FFBF00">
-        <block type="events_whenplayerjoins" />
-    </category>
-    <category name="Control" colour="#FFAB19">
-        <block type="control_wait" />
-        <sep gap="48" />
-        <block type="control_whiletruedo" />
-    </category>
+    
+    
     <category name="Sensing" colour="#5CB1D6">
         <block type="sensing_print" />
         <block type="sensing_warn" />
@@ -32,13 +26,17 @@
     </category>-->
     <category name="News" colour="#FF0000">
         <label text="Robloxbuilder is down."></label>
+        <label text="Although the Blocks are"></label>
+        <label text="back, i couldn't get"></label>
+        <label text="the prismjs to work."></label>
+    </category>
+    <category name="Events" colour="#FFBF00">
+        <block type="events_whenplayerjoins" />
+    </category>
+    <category name="Control" colour="#FFAB19">
+        <block type="control_wait" />
         <sep gap="48" />
-        <label text="During the attempts of"></label>
-        <label text="turning the JavaScript Generators"></label>
-        <label text="into Lua Generators,"></label>
-        <label text="Everything broke."></label>
-        <label text="This is what remains"></label>
-        <label text="of RobloxBuilder"></label>
+        <block type="control_whiletruedo" />
     </category>
     <category name="Inputs" colour="#FF6680">
         <block type="inputs_string" />

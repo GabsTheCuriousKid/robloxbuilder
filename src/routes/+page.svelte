@@ -40,6 +40,9 @@
     import preload from "../resources/preload";
 
     // Blocks
+    import registerEvents from "../resources/blocks/events.js";
+    import registerControl from "../resources/blocks/control.js";
+    import registerSensing from "../resources/blocks/sensing.js";
     import registerInputs from "../resources/blocks/inputs.js";
     registerInputs();
 
@@ -100,7 +103,7 @@
     let luaLoaded = false;
 
     import pkg from '@blockly/workspace-minimap';
-
+    const { PositionedMinimap } = pkg;
     onMount(() => {
         console.log("ignore the warnings above we dont care about those");
 
@@ -112,6 +115,9 @@
         EventManager.on(EventManager.EVENT_THEME_CHANGED, () => {
             workspace.refreshTheme();
         });
+
+        const minimap = new PositionedMinimap(workspace);
+        minimap.init();
     });
 
     // code display & handling

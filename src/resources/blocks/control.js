@@ -9,15 +9,15 @@ function register() {
         message0: 'wait %1 secs',
         args0: [
             {
-                "type": "input_value",
-                "name": "NUMBER",
-                "check": "Number",
+                type: 'input_value',
+                name: 'NUMBER',
+                check: 'Number',
             },
         ],
         nextStatement: null,
         previousStatement: null,
         inputsInline: true,
-        colour: categoryColor
+        colour: categoryColor,
     }, (block) => {
         const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         
@@ -29,16 +29,16 @@ function register() {
         message0: 'while true do %1 %2',
         args0: [
             {
-                "type": "input_dummy"
+                type: "input_dummy"
             },
             {
-                "type": "input_statement",
-                "name": "CODE"
+                type: 'input_statement',
+                name: 'CODE',
             }
         ],
         previousStatement: null,
         inputsInline: true,
-        colour: categoryColor
+        colour: categoryColor,
     }, (block) => {
         const Blocks = luaGenerator.statementToCode(block, 'CODE');
         

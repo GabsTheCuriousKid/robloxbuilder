@@ -9,11 +9,11 @@ function register() {
         message0: 'when player joins %1 %2',
         args0: [
             {
-                "type": "input_dummy"
+                type: 'input_dummy',
             },
             {
-                "type": "input_statement",
-                "name": "CODE"
+                type: 'input_statement',
+                name: 'CODE',
             }
         ],
         nextStatement: null,

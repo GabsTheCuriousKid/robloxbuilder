@@ -9,9 +9,9 @@ function register() {
         message0: 'print %1',
         args0: [
             {
-                "type": "input_value",
-                "name": "TEXT",
-                "check": "String",
+                type: 'input_value',
+                name: 'TEXT',
+                check: 'String',
             },
         ],
         nextStatement: null,
@@ -29,9 +29,9 @@ function register() {
         message0: 'warn %1',
         args0: [
             {
-                "type": "input_value",
-                "name": "TEXT",
-                "check": "String",
+                type: 'input_value',
+                name: 'TEXT',
+                check: 'String',
             },
         ],
         nextStatement: null,
@@ -49,9 +49,9 @@ function register() {
         message0: 'error %1',
         args0: [
             {
-                "type": "input_value",
-                "name": "TEXT",
-                "check": "String",
+                type: 'input_value',
+                name: 'TEXT',
+                check: 'String',
             },
         ],
         nextStatement: null,
