@@ -16,7 +16,7 @@
     import JSZip from "jszip";
     import beautify from "js-beautify";
     import Prism from "prismjs";
-    import loadLanguages from "prismjs/components/"
+    import loadLanguages from "prismjs/components/index.js"
     import * as FileSaver from "file-saver";
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
@@ -145,6 +145,7 @@
     import pkg from '@blockly/workspace-minimap';
     const { PositionedMinimap } = pkg;
     onMount(() => {
+        loadLanguages(['lua']);
         console.log("ignore the warnings above we dont care about those");
 
         window.onbeforeunload = () => "";
@@ -261,12 +262,13 @@
         });
         return beautified;
     }
-    loadLanguages(['lua']);
+    
     function displayGeneratedCode(code) {
         const beautified = beautifyGeneratedCode(code);
         const highlighted = Prism.highlight(
             beautified,
-            Prism.languages.lua
+            Prism.languages.lua,
+            'lua'
         );
         return highlighted;
     }
