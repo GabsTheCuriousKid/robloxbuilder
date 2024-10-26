@@ -29,7 +29,240 @@
         type="text"
         placeholder="Script Name (ex: Script)"
         style="margin-left:4px;margin-right:4px"
-        bind:value={projectName}
-        on:change={updateGeneratedCode}
+        <!--bind:value={projectName}-->
+        <!--on:change={updateGeneratedCode}-->
     />
 </NavigationBar>
+
+<style>
+    :root {
+        --nav-height: 3rem;
+    }
+    input[type="file"]::file-selector-button {
+        padding: 0.35rem 1.65rem;
+
+        font-size: 0.75rem;
+        color: black;
+        background: transparent;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+    }
+    input[type="file"]::file-selector-button:focus,
+    input[type="file"]::file-selector-button:hover,
+    input[type="file"]::file-selector-button:active {
+        background: white;
+    }
+
+    :global(body.dark) input[type="file"]::file-selector-button {
+        color: #ccc;
+        border-color: #c6c6c6;
+    }
+    :global(body.dark) input[type="file"]::file-selector-button:focus,
+    :global(body.dark) input[type="file"]::file-selector-button:hover,
+    :global(body.dark) input[type="file"]::file-selector-button:active {
+        background: #111;
+    }
+
+    :global(body.dark) input[type="text"],
+    :global(body.dark) input[type="number"] {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        color: white;
+    }
+    :global(body.dark) input[type="text"]:hover,
+    :global(body.dark) input[type="number"]:hover {
+        background: transparent;
+        border: 1px solid dodgerblue;
+    }
+
+    .main {
+        position: absolute;
+        left: 0px;
+        top: var(--nav-height);
+        width: 100%;
+        height: calc(100% - var(--nav-height));
+
+        min-width: 870px;
+    }
+
+    .project-name {
+        width: 236px;
+
+        font-size: 20px;
+
+        border-radius: 6px;
+        outline: 1px dashed rgba(0, 0, 0, 0.15);
+        border: 0;
+        background: rgba(255, 255, 255, 0.25);
+        color: white;
+
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0.5rem;
+        transition: 0.25s;
+    }
+    .project-name::placeholder {
+        font-weight: normal;
+        color: white;
+        opacity: 1;
+        font-style: italic;
+    }
+    .project-name:hover {
+        background-color: hsla(0, 100%, 100%, 0.5);
+        transition: 0.25s;
+    }
+    .project-name:active,
+    .project-name:focus {
+        outline: none;
+        border: 1px solid hsla(0, 100%, 100%, 0);
+        box-shadow: 0 0 0 calc(0.5rem * 0.5) hsla(0, 100%, 100%, 0.25);
+        background-color: hsla(0, 100%, 100%, 1);
+        color: black;
+        transition: 0.25s;
+    }
+
+    .project-name[data-invalid="true"] {
+        background-color: #ffabab;
+        text-decoration: red underline;
+    }
+    :global(body.dark) .project-name[data-invalid="true"] {
+        background-color: #9b0000 !important;
+        text-decoration: red underline;
+    }
+
+    .extensionIcon {
+        width: 96px;
+        height: 96px;
+        object-fit: contain;
+    }
+
+    .row-menus {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .row-submenus {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        height: 100%;
+    }
+    .row-first-submenus {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+        height: 100%;
+    }
+    .row-subsubmenus {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 50%;
+    }
+
+    .extensionMenuPreview {
+        width: 60px;
+        cursor: pointer;
+        overflow: hidden;
+        color: #575e75;
+        user-select: none;
+    }
+    .extensionMenuPreview:hover {
+        color: #4c97ff !important;
+    }
+    .extensionMenuPreview:focus,
+    .extensionMenuPreview:active {
+        background-color: #e9eef2;
+    }
+    :global(body.dark) .extensionMenuPreview {
+        color: #ccc;
+    }
+    :global(body.dark) .extensionMenuPreview:focus,
+    :global(body.dark) .extensionMenuPreview:active {
+        background-color: #1e1e1e;
+    }
+    .extensionBubbleIcon {
+        width: 20px;
+        height: 20px;
+        background-size: 100%;
+        border-radius: 100%;
+        margin: 0 auto 0.125rem;
+        border: 1px rgba(0, 0, 0, 0.2) solid;
+    }
+    .extensionBubbleName {
+        font-size: 0.65rem;
+    }
+
+    .blockMenuButtons {
+        position: relative;
+        width: 100%;
+        height: 48px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        background: #f9f9f9;
+    }
+    :global(body.dark) .blockMenuButtons {
+        background-color: #111;
+    }
+
+    .blocklyWrapper {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 48px);
+    }
+    .assetsWrapper {
+        position: relative;
+        width: calc(100% - 16px);
+        height: calc(50% - 16px);
+        padding: 8px;
+        overflow: auto;
+    }
+    .codeActionsWrapper {
+        position: relative;
+        width: 100%;
+        height: 48px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        background: #f9f9f9;
+    }
+    :global(body.dark) .codeActionsWrapper {
+        background-color: #111;
+    }
+    .codeWrapper {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 48px);
+    }
+
+    .codeDisplay {
+        width: 100%;
+        height: 100%;
+
+        border: 0;
+        padding: 0;
+        overflow: auto;
+
+        background: #f9f9f9;
+        white-space: pre-wrap;
+        font-family: monospace !important;
+    }
+    :global(body.dark) .codeDisplay {
+        background-color: #111;
+    }
+
+    .warning {
+        background-color: yellow;
+        color: black;
+    }
+</style>
