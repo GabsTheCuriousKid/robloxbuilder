@@ -16,6 +16,7 @@
     import JSZip from "jszip";
     import beautify from "js-beautify";
     import Prism from "prismjs";
+    import { loadLanguages } from "prismjs/components/"
     import * as FileSaver from "file-saver";
     import fileDialog from "../resources/fileDialog";
     import EventManager from "../resources/events";
@@ -264,6 +265,7 @@
         });
         return beautified;
     }
+    loadLanguages(['lua']);
     function displayGeneratedCode(code) {
         const beautified = beautifyGeneratedCode(code);
         const highlighted = Prism.highlight(
