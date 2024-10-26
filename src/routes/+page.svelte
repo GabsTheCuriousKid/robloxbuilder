@@ -105,6 +105,11 @@
 
     let luaLoaded = false;
 
+    const extensionMetadata = {
+        id: "extensionID",
+        name: "Script",
+    };
+
     function updateGeneratedCode() {
         extensionMetadata.name = "Extension";
         extensionMetadata.id = "extensionID";
@@ -155,12 +160,16 @@
     }
     
     function displayGeneratedCode(code) {
-        const highlighted = Prism.highlight(
-            code,
-            Prism.languages.lua,
-            'lua'
-        );
-        return highlighted;
+        try {
+            if (!code) {
+                return "<p>No code generated yet.</p>";
+            }
+            const highlighted = Prism.highlight(code, Prism.languages.lua, 'lua');
+            return highlighted;
+        } catch (error) {
+            console.error("Error highlighting code:", error);
+            return "<p>Error displaying code.</p>";
+        }
     }
 
     function discordInvite() {
