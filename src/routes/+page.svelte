@@ -131,6 +131,7 @@
     function discordInvite() {
         window.open("https://discord.gg/eVQdK8csJc")
     }
+    document.getElementById("lua_code").innerHTML = "Test"
 </script>
 
 <NavigationBar>
@@ -168,7 +169,7 @@
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
-                        <p id="lua_code">Code is not available right now<p>
+                        <p id="lua_code">Code is not available right now</p>
                     </div>
                 </div>
             </div>
