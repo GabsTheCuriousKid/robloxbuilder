@@ -138,7 +138,7 @@
         window.open("https://discord.gg/eVQdK8csJc")
     }
 
-    document.getElementById("lua_code").innerHTML = displayGeneratedCode("-- this is a test")
+    document.getElementById("lua_code").innerHTML = String(displayGeneratedCode("-- this is a test"))
 </script>
 
 <NavigationBar>
