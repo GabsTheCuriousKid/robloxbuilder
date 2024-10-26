@@ -12,11 +12,6 @@
         <block type="sensing_warn" />
         <block type="sensing_error" />
     </category>
-    <category name="Inputs" colour="#FF6680">
-        <block type="inputs_string" />
-        <block type="inputs_number" />
-        <block type="inputs_nil" />
-    </category>
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
         <block type="funcs_localfunction" />
@@ -44,5 +39,10 @@
         <label text="Everything broke."></label>
         <label text="This is what remains"></label>
         <label text="of RobloxBuilder"></label>
+    </category>
+    <category name="Inputs" colour="#FF6680">
+        <block type="inputs_string" />
+        <block type="inputs_number" />
+        <block type="inputs_nil" />
     </category>
 </xml>

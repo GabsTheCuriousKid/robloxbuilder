@@ -39,6 +39,10 @@
     import Compiler from "../resources/compiler";
     import preload from "../resources/preload";
 
+    // Blocks
+    import registerInputs from "../resources/blocks/inputs.js";
+    registerInputs();
+
     const en = {
         rtl: false,
         msg: {
