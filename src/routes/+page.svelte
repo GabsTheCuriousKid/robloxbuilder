@@ -126,9 +126,9 @@
     }
     
     function displayGeneratedCode(code) {
-        const beautified = beautifyGeneratedCode(code);
+        const beautified = beautifyGeneratedCode();
         const highlighted = Prism.highlight(
-            beautified,
+            code,
             Prism.languages.lua,
             'lua'
         );
