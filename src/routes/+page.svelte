@@ -52,7 +52,7 @@
         type="text"
         placeholder="Script Name (ex: Script)"
         style="margin-left:4px;margin-right:4px"
-        <!--bind:value={projectName}-->
+        bind:value={projectName}
         <!--on:change={updateGeneratedCode}-->
     />
 </NavigationBar>
