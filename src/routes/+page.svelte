@@ -32,6 +32,10 @@
         startHats: true,
     });
 
+    Blockly.VerticalFlyout.prototype.getFlyoutScale = function () {
+        return config.zoom.startScale;
+    };
+
     import En from "blockly/msg/en";
     import "blockly/blocks";
 
@@ -41,6 +45,7 @@
     import preload from "../resources/preload";
 
     // Blocks
+    import registerMotion from "../resources/blocks/motion.js";
     import registerObjects from "../resources/blocks/objects.js";
     import registerEvents from "../resources/blocks/events.js";
     import registerControl from "../resources/blocks/control.js";
@@ -49,6 +54,7 @@
     import registerLiterals from "../resources/blocks/literals.js";
     import registerFunctions from "../resources/blocks/functions.js";
     import registerRoblox from "../resources/blocks/roblox.js";
+    registerMotion();
     registerObjects();
     registerEvents();
     registerControl();

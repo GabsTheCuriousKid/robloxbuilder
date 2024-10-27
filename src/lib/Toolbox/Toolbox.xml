@@ -1,5 +1,14 @@
 <xml>
-    <category name="Objects" colour="#9966FF">
+    <category name="Motion" colour="#4C97FF">
+        <block type="motion_movexby" />
+        <block type="motion_moveyby" />
+        <block type="motion_movezby" />
+        <block type="motion_moveto" />
+        <block type="motion_x" />
+        <block type="motion_y" />
+        <block type="motion_z" />
+    </category>
+    <category name="Objects" colour="#FFFFFF">
         <block type="objects_create" />
         <block type="objects_chat" />
     </category>
