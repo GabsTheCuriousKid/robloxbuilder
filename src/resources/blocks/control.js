@@ -1,4 +1,4 @@
-import { compileVars } from '../compiler/compileVarSection';
+import { compileVars } from '../compiler/compilerVarSection';
 import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
 
