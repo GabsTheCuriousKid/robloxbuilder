@@ -84,8 +84,8 @@ function register() {
         output: 'String',
         colour: categoryColor,
     }, (block) => {
-        const COLOR = colorconverters.rgbToHsv(colorconverters.hexToRgb(block.getFieldValue('COLOR')));
-        return [`Color3.new(${COLOR})`, luaGenerator.ORDER_ATOMIC];
+        const { h, s, v } = colorconverters.hexToHsv(block.getFieldValue('COLOR'));
+        return [`Color3.new(${h / 255}, ${s / 255}, ${v / 255})`, luaGenerator.ORDER_ATOMIC];
     });
 }
 

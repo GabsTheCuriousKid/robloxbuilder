@@ -45,4 +45,9 @@ colorconverters.rgbToHsv = function(r, g, b) {
     return { h, s, v };
 }
 
+colorconverters.hexToHsv = function(hex) {
+    const { r, g, b } = hexToRgb(hex);
+    return rgbToHsv(r, g, b);
+}
+
 export default colorconverters

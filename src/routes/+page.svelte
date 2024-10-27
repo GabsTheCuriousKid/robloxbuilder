@@ -11,6 +11,7 @@
     import Toolbox from "$lib/Toolbox/Toolbox.xml?raw";
 
     import JSZip from "jszip";
+    import {formatText} from 'lua-fmt';
     import beautify from "js-beautify";
     import Prism from "prismjs";
     import 'prismjs/components/prism-lua.min.js';
@@ -174,7 +175,7 @@
             if (!code) {
                 return "<p>No code generated yet.</p>";
             }
-            const highlighted = Prism.highlight(code, Prism.languages.lua, 'lua');
+            const highlighted = Prism.highlight(formatText(code), Prism.languages.lua, 'lua');
             return highlighted;
         } catch (error) {
             console.error("Error highlighting code:", error);
