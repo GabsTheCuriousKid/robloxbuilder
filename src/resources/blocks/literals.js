@@ -1,7 +1,9 @@
 import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
 
-const categoryPrefix = 'inputs_';
+import colorconverters from '../utils/colorconverters'
+
+const categoryPrefix = 'literals_';
 const categoryColor = '#FF6680';
 
 function register() {
@@ -48,6 +50,42 @@ function register() {
         colour: categoryColor,
     }, (block) => {
         return [`nil`, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}true`, {
+        message0: 'true',
+        args0: [],
+        inputsInline: true,
+        output: 'Boolean',
+        colour: categoryColor,
+    }, (block) => {
+        return [`true`, luaGenerator.ORDER_ATOMIC];
+    });
+    registerBlock(`${categoryPrefix}false`, {
+        message0: 'false',
+        args0: [],
+        inputsInline: true,
+        output: 'Boolean',
+        colour: categoryColor,
+    }, (block) => {
+        return [`true`, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}color3`, {
+        message0: '%1',
+        args0: [
+            {
+                "type": "field_colour_hsv_sliders",
+                "name": "COLOR",
+                "colour": "#ff0000"
+            }
+        ],
+        inputsInline: true,
+        output: 'String',
+        colour: categoryColor,
+    }, (block) => {
+        const COLOR = colorconverters.rgbToHsv(colorconverters.hexToRgb(block.getFieldValue('COLOR')));
+        return [`Color3.new(${COLOR})`, luaGenerator.ORDER_ATOMIC];
     });
 }
 

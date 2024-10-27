@@ -84,6 +84,16 @@ function register() {
         const SERVICE = block.getFieldValue('SERVICE');
         return [`game:GetService('${SERVICE}')`, luaGenerator.ORDER_ATOMIC];
     });
+
+    registerBlock(`${categoryPrefix}localplayer`, {
+        message0: 'local player',
+        args0: [],
+        inputsInline: true,
+        output: "String",
+        colour: categoryColor
+    }, (block) => {
+        return [`game.Players.LocalPlayer`, luaGenerator.ORDER_ATOMIC];
+    });
 }
 
 export default register;

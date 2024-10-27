@@ -6,16 +6,35 @@
         <block type="control_wait" />
         <sep gap="48" />
         <block type="control_whiletruedo" />
+        <sep gap="48" />
+        <block type="control_ifthen" />
+        <block type="control_ifthenelse" />
     </category>
     <category name="Sensing" colour="#5CB1D6">
         <block type="sensing_print" />
         <block type="sensing_warn" />
         <block type="sensing_error" />
     </category>
-    <category name="Inputs" colour="#FF6680">
-        <block type="inputs_string" />
-        <block type="inputs_number" />
-        <block type="inputs_nil" />
+    <category name="Operators" colour="#59C059">
+        <block type="operators_equals" />
+        <block type="operators_greaterthan" />
+        <block type="operators_lesserthan" />
+        <sep gap="48" />
+        <block type="operators_plus" />
+        <block type="operators_minus" />
+        <block type="operators_times" />
+        <block type="operators_divide" />
+        <block type="operators_power" />
+        <sep gap="48" />
+        <block type="operators_contains" />
+    </category>
+    <category name="Literals" colour="#FF6680">
+        <block type="literals_nil" />
+        <block type="literals_true" />
+        <block type="literals_false" />
+        <block type="literals_string" />
+        <block type="literals_number" />
+        <block type="literals_color3" />
     </category>
     <category name="Functions" colour="#FF4B4B">
         <block type="funcs_function" />
@@ -34,5 +53,6 @@
         <block type="roblox_parent" />
         <block type="roblox_type" />
         <block type="roblox_getservice" />
+        <block type="roblox_localplayer" />
     </category>
 </xml>

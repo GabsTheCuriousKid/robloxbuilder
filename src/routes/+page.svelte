@@ -44,13 +44,15 @@
     import registerEvents from "../resources/blocks/events.js";
     import registerControl from "../resources/blocks/control.js";
     import registerSensing from "../resources/blocks/sensing.js";
-    import registerInputs from "../resources/blocks/inputs.js";
+    import registerOperators from "../resources/blocks/operators.js";
+    import registerLiterals from "../resources/blocks/literals.js";
     import registerFunctions from "../resources/blocks/functions.js";
     import registerRoblox from "../resources/blocks/roblox.js";
     registerEvents();
     registerControl();
     registerSensing();
-    registerInputs();
+    registerOperators();
+    registerLiterals();
     registerFunctions();
     registerRoblox();
 
