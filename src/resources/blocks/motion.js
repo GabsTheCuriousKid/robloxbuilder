@@ -126,8 +126,7 @@ function register() {
                 check: 'String',
             },
         ],
-        nextStatement: null,
-        previousStatement: null,
+        output: "String",
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
@@ -145,8 +144,7 @@ function register() {
                 check: 'String',
             },
         ],
-        nextStatement: null,
-        previousStatement: null,
+        output: "String",
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
@@ -164,8 +162,7 @@ function register() {
                 check: 'String',
             },
         ],
-        nextStatement: null,
-        previousStatement: null,
+        output: "String",
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {

@@ -3,7 +3,7 @@ import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
 
 const categoryPrefix = 'objects_';
-const categoryColor = '#FFFFFF';
+const categoryColor = '#9966FF';
 
 function register() {
     registerBlock(`${categoryPrefix}create`, {

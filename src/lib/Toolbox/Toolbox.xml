@@ -8,7 +8,7 @@
         <block type="motion_y" />
         <block type="motion_z" />
     </category>
-    <category name="Objects" colour="#FFFFFF">
+    <category name="Objects" colour="#9966FF">
         <block type="objects_create" />
         <block type="objects_chat" />
     </category>
