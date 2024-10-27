@@ -1,4 +1,7 @@
 <xml>
+    <category name="Looks" colour="#9966FF">
+        <block type="looks_chat" />
+    </category>
     <category name="Events" colour="#FFBF00">
         <block type="events_whenplayerjoins" />
     </category>

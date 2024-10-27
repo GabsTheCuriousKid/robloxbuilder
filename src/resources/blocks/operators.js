@@ -48,7 +48,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} > ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} > ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
     registerBlock(`${categoryPrefix}lesserthan`, {
         message0: '%1 < %2',
@@ -70,7 +70,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} < ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} < ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}plus`, {
@@ -93,7 +93,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} + ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} + ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}minus`, {
@@ -116,7 +116,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} - ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} - ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}times`, {
@@ -139,7 +139,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} * ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} * ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}divide`, {
@@ -162,7 +162,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} / ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} / ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}power`, {
@@ -185,7 +185,7 @@ function register() {
     }, (block) => {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
-        return [`(${X} ^ ${Y})`, luaGenerator.ORDER_ATOMIC];
+        return [`(${X || 0} ^ ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}contains`, {

@@ -68,7 +68,7 @@ function register() {
         output: 'Boolean',
         colour: categoryColor,
     }, (block) => {
-        return [`true`, luaGenerator.ORDER_ATOMIC];
+        return [`false`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}color3`, {
