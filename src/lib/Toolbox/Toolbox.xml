@@ -1,6 +1,7 @@
 <xml>
-    <category name="Looks" colour="#9966FF">
-        <block type="looks_chat" />
+    <category name="Objects" colour="#9966FF">
+        <block type="objects_create" />
+        <block type="objects_chat" />
     </category>
     <category name="Events" colour="#FFBF00">
         <block type="events_whenplayerjoins" />
@@ -8,6 +9,8 @@
     <category name="Control" colour="#FFAB19">
         <block type="control_wait" />
         <sep gap="48" />
+        <block type="control_repeat" />
+        <block type="control_repeatuntil" />
         <block type="control_whiletruedo" />
         <sep gap="48" />
         <block type="control_ifthen" />
@@ -28,6 +31,8 @@
         <block type="operators_times" />
         <block type="operators_divide" />
         <block type="operators_power" />
+        <sep gap="48" />
+        <block type="operators_random" />
         <sep gap="48" />
         <block type="operators_contains" />
     </category>

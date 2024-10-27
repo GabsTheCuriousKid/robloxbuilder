@@ -1,3 +1,4 @@
+import { compileVars } from '../compiler/compileVarSection';
 import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
 
@@ -22,6 +23,80 @@ function register() {
         const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         
         const code = `task.wait(${NUMBER});`;
+        return `${code}\n`;
+    });
+
+    registerBlock(`${categoryPrefix}repeat`, {
+        message0: 'repeat %1 %2 %3 %4',
+        implicitAlign0: "RIGHT",
+        args0: [
+            {
+                type: 'input_value',
+                name: 'NUMBER',
+                check: 'Number',
+            },
+            {
+                type: "input_dummy"
+            },
+            {
+                type: 'input_statement',
+                name: 'CODE',
+            },
+            {
+                "type": "field_image",
+                "src": "/images/blockIcons/repeat.svg",
+                "width": 24,
+                "height": 24,
+                "alt": "*"
+            }
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor,
+    }, (block) => {
+        const VARIABLE = compileVars.new()
+        const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
+        const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
+        
+        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}until ${VARIABLE} > ${NUMBER}`;
+        return `${code}\n`;
+    });
+
+    registerBlock(`${categoryPrefix}repeatuntil`, {
+        message0: 'repeat until %1 %2 %3 %4',
+        implicitAlign0: "RIGHT",
+        args0: [
+            {
+                type: 'input_value',
+                name: 'BOOLEAN',
+                check: 'Boolean',
+            },
+            {
+                type: "input_dummy"
+            },
+            {
+                type: 'input_statement',
+                name: 'CODE',
+            },
+            {
+                "type": "field_image",
+                "src": "/images/blockIcons/repeat.svg",
+                "width": 24,
+                "height": 24,
+                "alt": "*"
+            }
+        ],
+        nextStatement: null,
+        previousStatement: null,
+        inputsInline: true,
+        colour: categoryColor,
+    }, (block) => {
+        const VARIABLE = compileVars.new()
+        const BOOLEAN = luaGenerator.valueToCode(block, 'BOOLEAN', luaGenerator.ORDER_ATOMIC)
+        const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
+        
+        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}until ${BOOLEAN}`;
         return `${code}\n`;
     });
 

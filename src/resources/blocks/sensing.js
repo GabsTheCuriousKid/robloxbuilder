@@ -11,7 +11,6 @@ function register() {
             {
                 type: 'input_value',
                 name: 'TEXT',
-                check: 'String',
             },
         ],
         nextStatement: null,
@@ -31,7 +30,6 @@ function register() {
             {
                 type: 'input_value',
                 name: 'TEXT',
-                check: 'String',
             },
         ],
         nextStatement: null,
@@ -51,7 +49,6 @@ function register() {
             {
                 type: 'input_value',
                 name: 'TEXT',
-                check: 'String',
             },
         ],
         nextStatement: null,

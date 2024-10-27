@@ -41,7 +41,7 @@
     import preload from "../resources/preload";
 
     // Blocks
-    import registerLooks from "../resources/blocks/looks.js";
+    import registerObjects from "../resources/blocks/objects.js";
     import registerEvents from "../resources/blocks/events.js";
     import registerControl from "../resources/blocks/control.js";
     import registerSensing from "../resources/blocks/sensing.js";
@@ -49,7 +49,7 @@
     import registerLiterals from "../resources/blocks/literals.js";
     import registerFunctions from "../resources/blocks/functions.js";
     import registerRoblox from "../resources/blocks/roblox.js";
-    registerLooks();
+    registerObjects();
     registerEvents();
     registerControl();
     registerSensing();
@@ -109,13 +109,11 @@
     let workspace;
     let compiler;
     let projectName = "";
-    let projectID = "";
     let lastGeneratedCode = "";
 
     let luaLoaded = false;
 
     const extensionMetadata = {
-        id: "extensionID",
         name: "Script",
     };
 
@@ -124,9 +122,6 @@
         extensionMetadata.id = "extensionID";
         if (projectName) {
             extensionMetadata.name = projectName;
-        }
-        if (projectID) {
-            extensionMetadata.id = projectID;
         }
         const code = compiler.compile(
             workspace,
@@ -162,6 +157,96 @@
         minimap.init();
     });
 
+    function downloadProject() {
+        // generate file name
+        let filteredProjectName = (projectName).replace(/[^a-z0-9\-]+/gim, "_");
+        let fileName = filteredProjectName + ".rb";
+        if (!filteredProjectName) {
+            fileName = "MyProject.rb";
+        }
+
+        // data
+        let projectData = Blockly.serialization.workspaces.save(workspace)
+
+        // modify data by me wow
+        projectData = {
+            blockly: projectData,
+            metadata: extensionMetadata,
+        }
+
+        // zip
+        const zip = new JSZip();
+        zip.file(
+            "README.txt",
+            "This file is not meant to be opened!" +
+                "\nBe careful as you can permanently break your project!"
+        );
+
+        // data
+        const data = zip.folder("data");
+        data.file("project.json", JSON.stringify(projectData));
+
+        // download
+        zip.generateAsync({ type: "blob" }).then((blob) => {
+            FileSaver.saveAs(blob, fileName);
+        });
+    }
+    function loadProject() {
+        fileDialog({ accept: ".rb" }).then((files) => {
+            if (!files) return;
+            const file = files[0];
+
+            const projectNameIdx = file.name.lastIndexOf(".tb");
+
+            JSZip.loadAsync(file.arrayBuffer()).then(async (zip) => {
+                console.log("loaded zip file...");
+
+                // get project json from the data folder
+                const dataFolder = zip.folder("data");
+                const projectJsonString = await dataFolder
+                    .file("project.json")
+                    .async("string");
+                const projectJson = JSON.parse(projectJsonString);
+
+                // do your thing
+                projectName = projectJson.metadata.name
+                for (var i in projectJson.metadata) {
+                    var v = projectJson.metadata[i]
+                    extensionMetadata[i] = v
+                }
+                for (var i in projectJson.images) {
+                    var v = projectJson.images[i]
+                    extensionImageStates[i] = v
+                }
+
+                // get project workspace xml stuffs
+                const workspacesFolder = zip.folder("workspaces");
+                const fileNames = [];
+                workspacesFolder.forEach((_, file) => {
+                    const fileName = file.name.replace("workspaces/", "");
+                    fileNames.push(fileName);
+                });
+                // console.log(fileNames); // debug
+                const idWorkspacePairs = {};
+                for (const fileName of fileNames) {
+                    const idx = fileName.lastIndexOf(".xml");
+                    const id = fileName.substring(0, idx);
+                    // assign to pairs
+                    idWorkspacePairs[id] = await workspacesFolder
+                        .file(fileName)
+                        .async("string");
+                }
+                // console.log(idWorkspacePairs); // debug
+
+                // laod
+                console.log(projectJson); // debug
+                Blockly.serialization.workspaces.load(projectJson.blockly, workspace);
+
+                updateGeneratedCode()
+            });
+        });
+    }
+
     // code display & handling
     function beautifyGeneratedCode(code) {
         const beautified = beautify.js(code, {
@@ -192,8 +277,8 @@
 <NavigationBar>
     <NavigationButton on:click={discordInvite}>Discord</NavigationButton>
     <NavigationDivider />
-    <NavigationButton on:click={discordInvite}>Save</NavigationButton>
-    <NavigationButton on:click={discordInvite}>Load</NavigationButton>
+    <NavigationButton on:click={downloadProject}>Save</NavigationButton>
+    <NavigationButton on:click={loadProject}>Load</NavigationButton>
     <NavigationDivider />
     <input
         class="project-name"
