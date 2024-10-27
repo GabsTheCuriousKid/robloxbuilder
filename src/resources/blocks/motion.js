@@ -9,9 +9,8 @@ function register() {
         message0: 'move object %1 x by %2',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
             {
                 type: 'input_value',
@@ -34,9 +33,8 @@ function register() {
         message0: 'move object %1 y by %2',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
             {
                 type: 'input_value',
@@ -59,9 +57,8 @@ function register() {
         message0: 'move object %1 z by %2',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
             {
                 type: 'input_value',
@@ -84,9 +81,8 @@ function register() {
         message0: 'move object %1 to x: %2 y: %3 z: %4',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
             {
                 type: 'input_value',
@@ -121,9 +117,8 @@ function register() {
         message0: 'x position of object %1',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
         ],
         output: "String",
@@ -139,9 +134,8 @@ function register() {
         message0: 'y position of object %1',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
         ],
         output: "String",
@@ -157,9 +151,8 @@ function register() {
         message0: 'z position of object %1',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
         ],
         output: "String",

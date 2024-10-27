@@ -10,9 +10,8 @@ function register() {
         message0: 'create instance %1 with local %2',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
             {
                 type: 'input_value',
@@ -35,9 +34,8 @@ function register() {
         message0: 'object %1 chats %2',
         args0: [
             {
-                type: 'input_value',
+                type: 'field_input',
                 name: 'OBJECT',
-                check: 'String',
             },
             {
                 type: 'input_value',
