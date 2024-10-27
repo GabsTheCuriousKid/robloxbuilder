@@ -1,3 +1,4 @@
+import { compileVars } from '../compiler/compilerVarSection';
 import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
 
@@ -27,7 +28,7 @@ function register() {
         const LOCAL = luaGenerator.valueToCode(block, 'LOCAL', luaGenerator.ORDER_ATOMIC)
         const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
 
-        const code = `local ${LOCAL} = Instance.new('${OBJECT}')`;
+        const code = `local ${LOCAL || compileVars.new()} = Instance.new('${OBJECT}')`;
         return `${code}\n`;
     });
     registerBlock(`${categoryPrefix}chat`, {

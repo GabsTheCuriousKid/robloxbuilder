@@ -44,7 +44,7 @@ function register() {
             },
             {
                 "type": "field_image",
-                "src": "/images/blockIcons/repeat.svg",
+                "src": "https://dinobuilder.vercel.app/images/blockIcons/repeat.svg",
                 "width": 24,
                 "height": 24,
                 "alt": "*"
@@ -59,7 +59,7 @@ function register() {
         const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
         
-        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}until ${VARIABLE} > ${NUMBER}`;
+        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}until ${VARIABLE} > ${NUMBER || 10}`;
         return `${code}\n`;
     });
 
@@ -81,7 +81,7 @@ function register() {
             },
             {
                 "type": "field_image",
-                "src": "/images/blockIcons/repeat.svg",
+                "src": "https://dinobuilder.vercel.app/images/blockIcons/repeat.svg",
                 "width": 24,
                 "height": 24,
                 "alt": "*"
@@ -96,7 +96,7 @@ function register() {
         const BOOLEAN = luaGenerator.valueToCode(block, 'BOOLEAN', luaGenerator.ORDER_ATOMIC)
         const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
         
-        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}until ${BOOLEAN}`;
+        const code = `repeat\n${BLOCKS}until ${BOOLEAN}`;
         return `${code}\n`;
     });
 
