@@ -59,7 +59,7 @@ function register() {
         const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
         
-        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}until ${VARIABLE} > ${NUMBER || 10}`;
+        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}${VARIABLE} = ${VARIABLE} + 1\nuntil ${VARIABLE} > ${NUMBER || 10}`;
         return `${code}\n`;
     });
 
