@@ -188,6 +188,29 @@ function register() {
         return [`(${X || 0} ^ ${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     });
 
+    registerBlock(`${categoryPrefix}random`, {
+        message0: 'pick random %1 to %2',
+        args0: [
+            {
+                type: 'input_value',
+                name: 'X',
+                check: 'String',
+            },
+            {
+                type: 'input_value',
+                name: 'Y',
+                check: 'String',
+            },
+        ],
+        output: "Number",
+        inputsInline: true,
+        colour: categoryColor,
+    }, (block) => {
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
+        return [`math.random(${X || 1}, ${Y || 10})`, luaGenerator.ORDER_ATOMIC];
+    });
+
     registerBlock(`${categoryPrefix}contains`, {
         message0: '%1 contains %2',
         args0: [
