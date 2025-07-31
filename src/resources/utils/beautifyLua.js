@@ -3,7 +3,7 @@ import Lua from "tree-sitter-lua";
 
 let parser;
 
-export async function beautifyLua(code) {
+export default async function beautifyLua(code) {
   if (!parser) {
     await Parser.init();
     parser = new Parser();
