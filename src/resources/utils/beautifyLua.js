@@ -1,4 +1,4 @@
-import Parser from "web-tree-sitter";
+import * as Parser from "web-tree-sitter";
 import Lua from "tree-sitter-lua";
 
 let parser;
