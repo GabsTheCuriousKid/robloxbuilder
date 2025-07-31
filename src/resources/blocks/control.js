@@ -55,11 +55,10 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const VARIABLE = compileVars.new()
         const NUMBER = luaGenerator.valueToCode(block, 'NUMBER', luaGenerator.ORDER_ATOMIC)
         const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
         
-        const code = `local ${VARIABLE} = 0;\nrepeat\n${BLOCKS}${VARIABLE} = ${VARIABLE} + 1\nuntil ${VARIABLE} > ${NUMBER || 10}`;
+        const code = `for i = 1,${NUMBER},1 do \n${BLOCKS}\nend`;
         return `${code}\n`;
     });
 

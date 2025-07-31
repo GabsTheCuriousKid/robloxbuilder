@@ -1,0 +1,93 @@
+import { compileVars } from '../compiler/compilerVarSection';
+import luaGenerator from '../luaGenerator';
+import registerBlock from '../register/lua';
+
+const categoryPrefix = 'arrays_';
+const categoryColor = '#3639BE';
+
+function register() {
+    registerBlock(`${categoryPrefix}empty`, {
+        message0: 'empty array',
+        args0: [],
+        inputsInline: true,
+        output: 'String',
+        colour: categoryColor,
+    }, (block) => {
+        return [`{}`, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}set`, {
+        message0: 'set %1 to %2 in array %3',
+        args0: [
+            {
+                "type": "input_value",
+                "name": "X",
+                "check": "Number"
+            },
+            {
+                "type": "input_value",
+                "name": "Y",
+            },
+            {
+                "type": "input_value",
+                "name": "Z",
+                "check": "JSONArray"
+            },
+        ],
+        output: "JSONArray",
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const X = javascriptGenerator.valueToCode(block, 'X', javascriptGenerator.ORDER_ATOMIC);
+        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
+        const Z = javascriptGenerator.valueToCode(block, 'Z', javascriptGenerator.ORDER_ATOMIC);
+        return [`(function()\nlocal z = ${Z}\nx[${X}] = ${Y}\nreturn x\nend)()`, javascriptGenerator.ORDER_ATOMIC];
+    })
+
+    registerBlock(`${categoryPrefix}get`, {
+        message0: 'get %1 of array %2',
+        args0: [
+            {
+                "type": "input_value",
+                "name": "X"
+            },
+            {
+                "type": "input_value",
+                "name": "Y",
+                "check": "JSONArray"
+            },
+        ],
+        output: "JSONArray",
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const X = javascriptGenerator.valueToCode(block, 'X', javascriptGenerator.ORDER_ATOMIC);
+        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
+        return [`${Y}[${X}]`, javascriptGenerator.ORDER_ATOMIC];
+    })
+
+    registerBlock(`${categoryPrefix}merge`, {
+        message0: 'merge array %1 with %2',
+        args0: [
+            {
+                "type": "input_value",
+                "name": "X",
+                "check": "JSONArray"
+            },
+            {
+                "type": "input_value",
+                "name": "Y",
+                "check": "JSONArray"
+            },
+        ],
+        output: "JSONArray",
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const X = javascriptGenerator.valueToCode(block, 'X', javascriptGenerator.ORDER_ATOMIC);
+        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
+        return [`(function()\nlocal x = ${X}\nlocal y = ${Y}\nfor i=1,#y do\nx[#x+1] = y[i]\nend\nreturn x\nend)()`, javascriptGenerator.ORDER_ATOMIC];
+    })
+}
+
+export default register;

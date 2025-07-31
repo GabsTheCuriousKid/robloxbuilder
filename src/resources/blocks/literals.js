@@ -70,6 +70,15 @@ function register() {
     }, (block) => {
         return [`false`, luaGenerator.ORDER_ATOMIC];
     });
+    registerBlock(`${categoryPrefix}random`, {
+        message0: 'random',
+        args0: [],
+        inputsInline: true,
+        output: 'Boolean',
+        colour: categoryColor,
+    }, (block) => {
+        return [`math.random(0, 1) == 1`, luaGenerator.ORDER_ATOMIC];
+    });
 
     registerBlock(`${categoryPrefix}color3`, {
         message0: '%1',

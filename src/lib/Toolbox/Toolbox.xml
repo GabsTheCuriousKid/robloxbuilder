@@ -14,6 +14,8 @@
     </category>
     <category name="Events" colour="#FFBF00">
         <block type="events_whenplayerjoins" />
+        <sep gap="48" />
+        <block type="events_every" />
     </category>
     <category name="Control" colour="#FFAB19">
         <block type="control_wait" />
@@ -29,11 +31,17 @@
         <block type="sensing_print" />
         <block type="sensing_warn" />
         <block type="sensing_error" />
+        <sep gap="48" />
+        <block type="sensing_time" />
     </category>
     <category name="Operators" colour="#59C059">
         <block type="operators_equals" />
         <block type="operators_greaterthan" />
         <block type="operators_lesserthan" />
+        <sep gap="48" />
+        <block type="operators_and" />
+        <block type="operators_or" />
+        <block type="operators_not" />
         <sep gap="48" />
         <block type="operators_plus" />
         <block type="operators_minus" />
@@ -41,14 +49,18 @@
         <block type="operators_divide" />
         <block type="operators_power" />
         <sep gap="48" />
+        <block type="operators_adv" />
+        <sep gap="48" />
         <block type="operators_random" />
         <sep gap="48" />
         <block type="operators_contains" />
+        <block type="operators_length" />
     </category>
     <category name="Literals" colour="#FF6680">
         <block type="literals_nil" />
         <block type="literals_true" />
         <block type="literals_false" />
+        <block type="literals_random" />
         <block type="literals_string" />
         <block type="literals_number" />
         <block type="literals_color3" />
@@ -64,7 +76,14 @@
         <block type="funcs_localtable" />
         <sep gap="48" />
         <block type="funcs_raw" />
+        <block type="funcs_rawreporter" />
         <block type="funcs_return" />
+    </category>
+    <category name="Arrays" colour="#3639BE">
+        <block type="arrays_empty" />
+        <block type="arrays_set" />
+        <block type="arrays_get" />
+        <block type="arrays_merge" />
     </category>
     <category name="Roblox" colour="#000000">
         <block type="roblox_parent" />

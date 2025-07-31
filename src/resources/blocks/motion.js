@@ -23,7 +23,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
 
         const code = `${OBJECT}.Position = ${OBJECT}.Position + Vector3.new(${X},0,0)`;
@@ -47,7 +47,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
 
         const code = `${OBJECT}.Position = ${OBJECT}.Position + Vector3.new(0,${Y},0)`;
@@ -71,7 +71,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
         const Z = luaGenerator.valueToCode(block, 'Z', luaGenerator.ORDER_ATOMIC)
 
         const code = `${OBJECT}.Position = ${OBJECT}.Position + Vector3.new(0,0,${Z})`;
@@ -105,7 +105,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
         const Z = luaGenerator.valueToCode(block, 'Z', luaGenerator.ORDER_ATOMIC)
@@ -125,7 +125,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
 
         const code = `${OBJECT}.Position.X`;
         return `${code}\n`;
@@ -142,7 +142,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
 
         const code = `${OBJECT}.Position.Y`;
         return `${code}\n`;
@@ -159,7 +159,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
 
         const code = `${OBJECT}.Position.Z`;
         return `${code}\n`;

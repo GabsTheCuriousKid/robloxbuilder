@@ -61,6 +61,16 @@ function register() {
         const code = `error(${TEXT});`;
         return `${code}\n`;
     });
+
+    registerBlock(`${categoryPrefix}time`, {
+        message0: 'time (secs) since 1970',
+        args0: [],
+        output: "Number",
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        return [`os.time()`, javascriptGenerator.ORDER_ATOMIC];
+    })
 }
 
 export default register;

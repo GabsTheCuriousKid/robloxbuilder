@@ -13,7 +13,7 @@ class Compiler {
         const code = luaGenerator.workspaceToCode(workspace);
 
         const headerCode = [
-            `-- This extension was made with RobloxBuilder`,
+            `-- This script was made with RobloxBuilder`,
             `-- https://robloxbuilder.vercel.app/`,
             ``,
         ];

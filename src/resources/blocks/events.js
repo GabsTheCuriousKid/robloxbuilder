@@ -24,6 +24,31 @@ function register() {
         const code = `game.Players.PlayerAdded:Connect(function(Player)\n${Blocks}end)`;
         return `${code}\n`;
     });
+
+    registerBlock(`${categoryPrefix}every`, {
+        message0: 'every %1 seconds do %2 %3',
+        args0: [
+            {
+                "type": "input_value",
+                "name": "TIME",
+                "check": "Number"
+            },
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_statement",
+                "name": "BLOCKS"
+            }
+        ],
+        inputsInline: true,
+        colour: categoryColor,
+    }, (block) => {
+        const TIME = javascriptGenerator.valueToCode(block, 'TIME', javascriptGenerator.ORDER_ATOMIC);
+        const BLOCKS = javascriptGenerator.statementToCode(block, 'BLOCKS');
+        const code = `while wait(${TIME}) do\n${BLOCKS}\nend`;
+        return `${code}\n`;
+    })
 }
 
 export default register;

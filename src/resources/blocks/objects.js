@@ -25,7 +25,7 @@ function register() {
         colour: categoryColor,
     }, (block) => {
         const LOCAL = luaGenerator.valueToCode(block, 'LOCAL', luaGenerator.ORDER_ATOMIC)
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
 
         const code = `local ${LOCAL || compileVars.new()} = Instance.new(${OBJECT})`;
         return `${code}\n`;
@@ -48,7 +48,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const OBJECT = block.getFieldValue('OBJECT')
         const MESSAGE = luaGenerator.valueToCode(block, 'CHAT', luaGenerator.ORDER_ATOMIC)
         
         const code = `game.Chat:Chat(${OBJECT}, ${MESSAGE}, Enum.ChatColor.Blue);`;

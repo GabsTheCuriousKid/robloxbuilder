@@ -18,5 +18,5 @@ export default (blockName, jsonData, compileFunction) => {
     Blockly.Blocks[blockName] = blockObject
 
     // register block compile function
-    luaGenerator[blockName] = compileFunction;
+    luaGenerator.forBlock[blockName] = compileFunction;
 }

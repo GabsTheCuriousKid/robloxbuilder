@@ -53,6 +53,7 @@
     import registerOperators from "../resources/blocks/operators.js";
     import registerLiterals from "../resources/blocks/literals.js";
     import registerFunctions from "../resources/blocks/functions.js";
+    import registerArrays from "../resources/blocks/arrays.js";
     import registerRoblox from "../resources/blocks/roblox.js";
     registerMotion();
     registerObjects();
@@ -62,6 +63,7 @@
     registerOperators();
     registerLiterals();
     registerFunctions();
+    registerArrays();
     registerRoblox();
 
     const en = {
@@ -274,15 +276,9 @@
             return "<p>Error displaying code.</p>";
         }
     }
-
-    function discordInvite() {
-        window.open("https://discord.gg/eVQdK8csJc")
-    }
 </script>
 
 <NavigationBar>
-    <NavigationButton on:click={discordInvite}>Discord</NavigationButton>
-    <NavigationDivider />
     <NavigationButton on:click={downloadProject}>Save</NavigationButton>
     <NavigationButton on:click={loadProject}>Load</NavigationButton>
     <NavigationDivider />
