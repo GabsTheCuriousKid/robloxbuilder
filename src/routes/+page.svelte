@@ -12,7 +12,7 @@
 
     import JSZip from "jszip";
     import beautify from "js-beautify";
-    import beautifyLua from '../resources/utils/colorconverters'
+    import beautifyLua from '../resources/utils/beautifyLua'
     import Prism from "prismjs";
     import 'prismjs/components/prism-lua.min.js';
     import * as FileSaver from "file-saver";
