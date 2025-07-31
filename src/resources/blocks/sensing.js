@@ -69,7 +69,7 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        return [`os.time()`, javascriptGenerator.ORDER_ATOMIC];
+        return [`os.time()`, luaGenerator.ORDER_ATOMIC];
     })
 }
 

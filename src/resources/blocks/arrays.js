@@ -38,10 +38,10 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const X = javascriptGenerator.valueToCode(block, 'X', javascriptGenerator.ORDER_ATOMIC);
-        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
-        const Z = javascriptGenerator.valueToCode(block, 'Z', javascriptGenerator.ORDER_ATOMIC);
-        return [`(function()\nlocal z = ${Z}\nx[${X}] = ${Y}\nreturn x\nend)()`, javascriptGenerator.ORDER_ATOMIC];
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC);
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC);
+        const Z = luaGenerator.valueToCode(block, 'Z', luaGenerator.ORDER_ATOMIC);
+        return [`(function()\nlocal z = ${Z}\nx[${X}] = ${Y}\nreturn x\nend)()`, luaGenerator.ORDER_ATOMIC];
     })
 
     registerBlock(`${categoryPrefix}get`, {
@@ -61,9 +61,9 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const X = javascriptGenerator.valueToCode(block, 'X', javascriptGenerator.ORDER_ATOMIC);
-        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
-        return [`${Y}[${X}]`, javascriptGenerator.ORDER_ATOMIC];
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC);
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC);
+        return [`${Y}[${X}]`, luaGenerator.ORDER_ATOMIC];
     })
 
     registerBlock(`${categoryPrefix}merge`, {
@@ -84,9 +84,9 @@ function register() {
         inputsInline: true,
         colour: categoryColor
     }, (block) => {
-        const X = javascriptGenerator.valueToCode(block, 'X', javascriptGenerator.ORDER_ATOMIC);
-        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
-        return [`(function()\nlocal x = ${X}\nlocal y = ${Y}\nfor i=1,#y do\nx[#x+1] = y[i]\nend\nreturn x\nend)()`, javascriptGenerator.ORDER_ATOMIC];
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC);
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC);
+        return [`(function()\nlocal x = ${X}\nlocal y = ${Y}\nfor i=1,#y do\nx[#x+1] = y[i]\nend\nreturn x\nend)()`, luaGenerator.ORDER_ATOMIC];
     })
 }
 

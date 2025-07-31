@@ -288,9 +288,9 @@ function register() {
         colour: categoryColor
     }, (block) => {
         const X = block.getFieldValue('X')
-        const Y = javascriptGenerator.valueToCode(block, 'Y', javascriptGenerator.ORDER_ATOMIC);
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC);
 
-        return [`math.${X}(${Y || 0})`, javascriptGenerator.ORDER_ATOMIC];
+        return [`math.${X}(${Y || 0})`, luaGenerator.ORDER_ATOMIC];
     })
 
     registerBlock(`${categoryPrefix}random`, {

@@ -44,8 +44,8 @@ function register() {
         inputsInline: true,
         colour: categoryColor,
     }, (block) => {
-        const TIME = javascriptGenerator.valueToCode(block, 'TIME', javascriptGenerator.ORDER_ATOMIC);
-        const BLOCKS = javascriptGenerator.statementToCode(block, 'BLOCKS');
+        const TIME = luaGenerator.valueToCode(block, 'TIME', luaGenerator.ORDER_ATOMIC);
+        const BLOCKS = luaGenerator.statementToCode(block, 'BLOCKS');
         const code = `while wait(${TIME}) do\n${BLOCKS}\nend`;
         return `${code}\n`;
     })
