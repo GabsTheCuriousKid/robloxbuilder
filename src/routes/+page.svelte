@@ -12,6 +12,7 @@
 
     import JSZip from "jszip";
     import beautify from "js-beautify";
+    import beautifyLua from '../resources/utils/colorconverters'
     import Prism from "prismjs";
     import 'prismjs/components/prism-lua.min.js';
     import * as FileSaver from "file-saver";
@@ -257,10 +258,7 @@
 
     // code display & handling
     function beautifyGeneratedCode(code) {
-        const beautified = beautify.js(code, {
-            indent_size: 4,
-            space_in_empty_paren: true,
-        });
+        const beautified = beautifyLua(code)
         return beautified;
     }
     
@@ -269,7 +267,7 @@
             if (!code) {
                 return "<p>No code generated yet.</p>";
             }
-            const highlighted = Prism.highlight(code, Prism.languages.lua, 'lua');
+            const highlighted = Prism.highlight(beautifyGeneratedCode(code), Prism.languages.lua, 'lua');
             return highlighted;
         } catch (error) {
             console.error("Error highlighting code:", error);

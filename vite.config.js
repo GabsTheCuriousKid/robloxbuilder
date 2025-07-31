@@ -12,5 +12,8 @@ export default defineConfig({
 	},
 	build: {
 		sourcemap: true
-	}
+	},
+	ssr: {
+    	noExternal: ['tree-sitter', 'tree-sitter-lua']
+  	}
 });
