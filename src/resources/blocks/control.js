@@ -142,7 +142,7 @@ function register() {
     }, (block) => {
         const CONDITION = luaGenerator.valueToCode(block, 'CONDITION', luaGenerator.ORDER_ATOMIC);
         const BLOCKS = luaGenerator.statementToCode(block, 'BLOCKS');
-        const code = `if (${CONDITION ? `Boolean(${CONDITION})` : 'false'}) then\n${BLOCKS}end`;
+        const code = `if ${CONDITION ? `${CONDITION}` : 'false'} then\n${BLOCKS}end`;
         return `${code}\n`;
     })
 
@@ -177,7 +177,7 @@ function register() {
         const CONDITION = luaGenerator.valueToCode(block, 'CONDITION', luaGenerator.ORDER_ATOMIC);
         const BLOCKS = luaGenerator.statementToCode(block, 'BLOCKS');
         const BLOCKS2 = luaGenerator.statementToCode(block, 'BLOCKS2');
-        const code = `if (${CONDITION ? `Boolean(${CONDITION})` : 'false'}) then\n${BLOCKS}else\n${BLOCKS2}end`;
+        const code = `if ${CONDITION ? `${CONDITION}` : 'false'} then\n${BLOCKS}else\n${BLOCKS2}end`;
         return `${code}\n`;
     })
 }
