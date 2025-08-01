@@ -89,6 +89,7 @@
         <block type="roblox_parent" />
         <block type="roblox_type" />
         <block type="roblox_typecustom" />
+        <block type="roblox_typecustom2" />
         <block type="roblox_getservice" />
         <block type="roblox_localplayer" />
     </category>

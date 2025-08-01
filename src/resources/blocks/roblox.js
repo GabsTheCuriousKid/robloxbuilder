@@ -43,7 +43,30 @@ function register() {
     });
 
     registerBlock(`${categoryPrefix}typecustom`, {
-        message0: '%1 \'s %2',
+        message0: '%1 . %2',
+        args0: [
+            {
+                type: "input_value",
+                name: "OBJECT",
+                check: "String",
+            },
+            {
+                type: "input_value",
+                name: "TYPE",
+                check: "String",
+            },
+        ],
+        inputsInline: true,
+        output: "String",
+        colour: categoryColor
+    }, (block) => {
+        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const TYPE = luaGenerator.valueToCode(block, 'TYPE', luaGenerator.ORDER_ATOMIC)
+        return [`${OBJECT}.${TYPE}`, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}typecustom2`, {
+        message0: '%1 [%2]',
         args0: [
             {
                 type: "input_value",
