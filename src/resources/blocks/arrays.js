@@ -10,7 +10,7 @@ function register() {
         message0: 'empty array',
         args0: [],
         inputsInline: true,
-        output: 'String',
+        output: "JSONArray",
         colour: categoryColor,
     }, (block) => {
         return [`{}`, luaGenerator.ORDER_ATOMIC];
