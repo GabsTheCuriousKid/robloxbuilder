@@ -1,7 +1,7 @@
 import luaGenerator from '../luaGenerator';
 
 const start = ``
-const tab = `  `
+const tab = `    `
 
 class Compiler {
     /**
@@ -20,11 +20,10 @@ class Compiler {
             `local rBUtilities = {`,
             `${tab}arrays = {`,
             `${tab}${tab}shuffle = function(array)`,
-            `${tab}${tab}${tab}local newArray = {}`,
-            `${tab}${tab}${tab}for i = #array, 1, -1 do`,
+            `${tab}${tab}${tab}local newArray = table.clone(array)`,
+            `${tab}${tab}${tab}for i = #newArray, 1, -1 do`,
             `${tab}${tab}${tab}${tab}local j = math.random(i)`,
             `${tab}${tab}${tab}${tab}array[i], array[j] = array[j], array[i]`,
-            `${tab}${tab}${tab}${tab}table.insert(newArray, array[i])`,
             `${tab}${tab}${tab}end`,
             ``,
             `${tab}${tab}${tab}return newArray`,
