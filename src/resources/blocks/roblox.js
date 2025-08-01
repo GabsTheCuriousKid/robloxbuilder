@@ -15,6 +15,16 @@ function register() {
         return [`script.Parent`, luaGenerator.ORDER_ATOMIC];
     });
 
+    registerBlock(`${categoryPrefix}script`, {
+        message0: 'script',
+        args0: [],
+        inputsInline: true,
+        output: "String",
+        colour: categoryColor
+    }, (block) => {
+        return [`script`, luaGenerator.ORDER_ATOMIC];
+    });
+
     registerBlock(`${categoryPrefix}type`, {
         message0: '%1 \'s %2',
         args0: [

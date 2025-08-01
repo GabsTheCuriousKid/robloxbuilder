@@ -143,8 +143,7 @@ function register() {
             },
             {
                 type: "input_value",
-                name: "DEFINE",
-                check: "String",
+                name: "DEFINE"
             },
         ],
         nextStatement: null,

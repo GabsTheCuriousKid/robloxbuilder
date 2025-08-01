@@ -86,7 +86,7 @@
         <block type="arrays_merge" />
     </category>
     <category name="Roblox" colour="#333333">
-        <block type="roblox_parent" />
+        <block type="roblox_script" />
         <block type="roblox_type" />
         <block type="roblox_typecustom" />
         <block type="roblox_typecustom2" />
