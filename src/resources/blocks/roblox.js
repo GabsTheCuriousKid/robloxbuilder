@@ -85,7 +85,7 @@ function register() {
     }, (block) => {
         const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
         const TYPE = luaGenerator.valueToCode(block, 'TYPE', luaGenerator.ORDER_ATOMIC)
-        return [`${OBJECT}.${TYPE}`, luaGenerator.ORDER_ATOMIC];
+        return [`${OBJECT}[${TYPE}]`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}getservice`, {
