@@ -41,6 +41,7 @@
         <sep gap="48" />
         <block type="operators_and" />
         <block type="operators_or" />
+        <block type="operators_xor" />
         <block type="operators_not" />
         <sep gap="48" />
         <block type="operators_plus" />
@@ -84,6 +85,7 @@
         <block type="arrays_set" />
         <block type="arrays_get" />
         <block type="arrays_merge" />
+        <block type="arrays_shuffle" />
     </category>
     <category name="Roblox" colour="#333333">
         <block type="roblox_script" />

@@ -41,7 +41,7 @@ function register() {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC);
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC);
         const Z = luaGenerator.valueToCode(block, 'Z', luaGenerator.ORDER_ATOMIC);
-        return [`(function()\n\tlocal z = ${Z}\n\tx[${X}] = ${Y}\n\treturn x\nend)()`, luaGenerator.ORDER_ATOMIC];
+        return [`(function()\n\tlocal z = ${Z}\n\tz[${X}] = ${Y}\n\treturn z\nend)()`, luaGenerator.ORDER_ATOMIC];
     })
 
     registerBlock(`${categoryPrefix}get`, {
@@ -87,6 +87,23 @@ function register() {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC);
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC);
         return [`(function()\n\tlocal x = ${X}\n\tlocal y = ${Y}\n\tfor i=1,#y do\n\t\tx[#x+1] = y[i]\n\tend\n\treturn x\nend)()`, luaGenerator.ORDER_ATOMIC];
+    })
+
+    registerBlock(`${categoryPrefix}shuffle`, {
+        message0: 'shuffle array %1',
+        args0: [
+            {
+                "type": "input_value",
+                "name": "X",
+                "check": "JSONArray"
+            },
+        ],
+        output: "JSONArray",
+        inputsInline: true,
+        colour: categoryColor
+    }, (block) => {
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC);
+        return [`(function()\n\tlocal x = ${X}\n\tx = rBUtilities.arrays.shuffle(x)\n\treturn x\nend)()`, luaGenerator.ORDER_ATOMIC];
     })
 }
 

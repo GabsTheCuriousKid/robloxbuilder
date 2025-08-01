@@ -117,6 +117,28 @@ function register() {
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
         return [`${X} or ${Y}`, luaGenerator.ORDER_ATOMIC];
     });
+    registerBlock(`${categoryPrefix}xor`, {
+        message0: '%1 xor %2',
+        args0: [
+            {
+                type: 'input_value',
+                name: 'X',
+                check: 'Boolean',
+            },
+            {
+                type: 'input_value',
+                name: 'Y',
+                check: 'Boolean',
+            },
+        ],
+        output: "Boolean",
+        inputsInline: true,
+        colour: categoryColor,
+    }, (block) => {
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
+        return [`rBUtilities.xor(${X}, ${Y})`, luaGenerator.ORDER_ATOMIC];
+    });
     registerBlock(`${categoryPrefix}not`, {
         message0: 'not %1',
         args0: [
