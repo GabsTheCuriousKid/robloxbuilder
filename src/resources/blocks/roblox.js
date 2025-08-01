@@ -2,7 +2,7 @@ import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
 
 const categoryPrefix = 'roblox_';
-const categoryColor = '#000000';
+const categoryColor = '#333333';
 
 function register() {
     registerBlock(`${categoryPrefix}parent`, {
@@ -39,6 +39,29 @@ function register() {
     }, (block) => {
         const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
         const TYPE = block.getFieldValue('TYPE');
+        return [`${OBJECT}.${TYPE}`, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}typecustom`, {
+        message0: '%1 \'s %2',
+        args0: [
+            {
+                type: "input_value",
+                name: "OBJECT",
+                check: "String",
+            },
+            {
+                type: "input_value",
+                name: "TYPE",
+                check: "String",
+            },
+        ],
+        inputsInline: true,
+        output: "String",
+        colour: categoryColor
+    }, (block) => {
+        const OBJECT = luaGenerator.valueToCode(block, 'OBJECT', luaGenerator.ORDER_ATOMIC)
+        const TYPE = luaGenerator.valueToCode(block, 'TYPE', luaGenerator.ORDER_ATOMIC)
         return [`${OBJECT}.${TYPE}`, luaGenerator.ORDER_ATOMIC];
     });
 
