@@ -4,6 +4,7 @@
         <block type="motion_moveyby" />
         <block type="motion_movezby" />
         <block type="motion_moveto" />
+        <block type="motion_setposofobject" />
         <block type="motion_x" />
         <block type="motion_y" />
         <block type="motion_z" />
