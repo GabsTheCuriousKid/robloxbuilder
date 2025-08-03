@@ -306,6 +306,34 @@
             <div class="row-subsubmenus">
                 <div class="codeActionsWrapper">
                     <p style="margin-right: 12px"><b>Generated Code</b></p>
+                    <StyledButton
+                        on:click={() => {
+                            // copy code
+                            const code =
+                                lastGeneratedCode;
+                            navigator.clipboard.writeText(code);
+                        }}
+                    >
+                        Copy
+                    </StyledButton>
+                    <div style="margin-right: 4px" />
+                    <StyledButton
+                        on:click={() => {
+                            // download
+                            const code =
+                                lastGeneratedCode;
+                            const filteredProjectName = projectName.replace(
+                                /[^a-z0-9\-]+/gim,
+                                "_"
+                            );
+                            const blob = new Blob([code], {
+                                type: "text/javascript;charset=UTF-8",
+                            });
+                            FileSaver.saveAs(blob, filteredProjectName + ".js");
+                        }}
+                    >
+                        Download
+                    </StyledButton>
                 </div>
                 <div class="codeWrapper">
                     <div class="codeDisplay">
