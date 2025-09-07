@@ -1,6 +1,7 @@
 import { compileVars } from '../compiler/compilerVarSection';
 import luaGenerator from '../luaGenerator';
 import registerBlock from '../register/lua';
+import Blockly from 'blockly/core';
 
 const categoryPrefix = 'control_';
 const categoryColor = '#FFAB19';
