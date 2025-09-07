@@ -28,8 +28,8 @@
         <sep gap="48" />
         <block type="control_ifthen" />
         <block type="control_ifthenelse" />
-        <label text="Experimental Blocks"></label>
-        <block type="control_forkvinpairs" />
+        <!--<label text="Experimental Blocks"></label>
+        <block type="control_forkvinpairs" />-->
     </category>
     <category name="Sensing" colour="#5CB1D6">
         <block type="sensing_print" />
