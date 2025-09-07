@@ -162,7 +162,7 @@ function register() {
             this.itemVarName_ = compileVars.new();
 
             this.jsonInit({
-                message0: 'for %1 %2 in %3(%4)%5 %6',
+                message0: 'for %1 %2 in %3\(%4\)%5 %6',
                 args0: [
                     {
                         "type": "input_value",
@@ -270,12 +270,12 @@ function register() {
             this.workspace.render();
         }
     }
-    javascriptGenerator.forBlock[`${categoryPrefix}forkvinpairs`] = function (block) {
+    luaGenerator.forBlock[`${categoryPrefix}forkvinpairs`] = function (block) {
         const keyVar = block.getVars()[0];
         const itemVar = block.getVars()[1];
         const PAIRS = block.getFieldValue('pairs');
         const ARRAY = luaGenerator.valueToCode(block, 'ARRAY', luaGenerator.ORDER_ATOMIC);
-        const BLOCKS = javascriptGenerator.statementToCode(block, 'CODE');
+        const BLOCKS = luaGenerator.statementToCode(block, 'CODE');
 
         const code = `for ${keyVar},${itemVar} in ${PAIRS}(${ARRAY}) do\n${BLOCKS}end`;
         return code;
@@ -294,7 +294,7 @@ function register() {
 
         const keyVar = (parent && parent.getVars()[0]) || "k";
 
-        return [keyVar, javascriptGenerator.ORDER_ATOMIC];
+        return [keyVar, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}ifthen`, {
