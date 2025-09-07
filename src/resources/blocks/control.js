@@ -104,16 +104,16 @@ function register() {
         implicitAlign0: "RIGHT",
         args0: [
             {
-                type: 'input_value',
-                name: 'BOOLEAN',
-                check: 'Boolean',
+                "type": 'input_value',
+                "name": 'BOOLEAN',
+                "check": 'Boolean',
             },
             {
-                type: "input_dummy"
+                "type": "input_dummy"
             },
             {
-                type: 'input_statement',
-                name: 'CODE',
+                "type": 'input_statement',
+                "name": 'CODE',
             },
             {
                 "type": "field_image",
