@@ -257,7 +257,7 @@ function register() {
                     }
                     const itemInput = this.getInput('ITEM');
                     if (!itemInput.connection.targetBlock()) {
-                        this.ensureKeyReporter();
+                        this.ensureItemReporter();
                     }
                 }
                 if (event.type === Blockly.Events.BLOCK_MOVE && event.newParentId === this.id && event.inputName === 'ITEM') {
