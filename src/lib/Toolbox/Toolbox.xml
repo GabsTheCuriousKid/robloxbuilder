@@ -40,6 +40,7 @@
     </category>
     <category name="Operators" colour="#59C059">
         <block type="operators_equals" />
+        <block type="operators_notequals" />
         <block type="operators_greaterthan" />
         <block type="operators_lesserthan" />
         <sep gap="48" />

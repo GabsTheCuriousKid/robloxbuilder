@@ -11,12 +11,10 @@ function register() {
             {
                 type: 'input_value',
                 name: 'X',
-                check: 'String',
             },
             {
                 type: 'input_value',
                 name: 'Y',
-                check: 'String',
             },
         ],
         output: "Boolean",
@@ -26,6 +24,27 @@ function register() {
         const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
         const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
         return [`(${X} == ${Y})`, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}notequals`, {
+        message0: '%1 ≠ %2',
+        args0: [
+            {
+                type: 'input_value',
+                name: 'X',
+            },
+            {
+                type: 'input_value',
+                name: 'Y',
+            },
+        ],
+        output: "Boolean",
+        inputsInline: true,
+        colour: categoryColor,
+    }, (block) => {
+        const X = luaGenerator.valueToCode(block, 'X', luaGenerator.ORDER_ATOMIC)
+        const Y = luaGenerator.valueToCode(block, 'Y', luaGenerator.ORDER_ATOMIC)
+        return [`(${X} ~= ${Y})`, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}greaterthan`, {

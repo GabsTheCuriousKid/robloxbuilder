@@ -173,7 +173,7 @@ function register() {
                     {
                         "type": "input_value",
                         "name": "ITEM",
-                        "check": null
+                        "check": "item"
                     },
                     {
                         "type": "field_dropdown",
@@ -214,9 +214,20 @@ function register() {
                     keyInput.connection.connect(reporter.outputConnection);
                 }
             }
+            this.ensureItemReporter = () => {
+                const keyInput = this.getInput('ITEM');
+                if (!keyInput.connection.targetBlock()) {
+                    const reporter = this.workspace.newBlock(`${categoryPrefix}forkvinpairs_item`);
+                    reporter.initSvg();
+                    reporter.render();
+
+                    keyInput.connection.connect(reporter.outputConnection);
+                }
+            }
 
             setTimeout(() => {
                 this.ensureKeyReporter();
+                this.ensureItemReporter();
             }, 1);
 
             this._workspaceChangeEvent = async (event) => {
@@ -238,6 +249,24 @@ function register() {
                         connectedBlock.unplug();
                     }
                 }
+                if (event.type === Blockly.Events.BLOCK_MOVE || event.type === Blockly.Events.BLOCK_DELETE) {
+                    while (this.workspace && this.rendered && !this.isDisposed_ && (!this.getInput('ITEM') || !this.getInput('ITEM').connection)) {
+                        await new Promise(resolve => setTimeout(resolve, 10))
+                    }
+                    const itemInput = this.getInput('ITEM');
+                    if (!itemInput.connection.targetBlock()) {
+                        this.ensureKeyReporter();
+                    }
+                }
+                if (event.type === Blockly.Events.BLOCK_MOVE && event.newParentId === this.id && event.inputName === 'KEY') {
+                    while (this.workspace && this.rendered && !this.isDisposed_ && (!this.getInput('ITEM') || !this.getInput('ITEM').connection)) {
+                        await new Promise(resolve => setTimeout(resolve, 10))
+                    }
+                    const connectedBlock = this.getInput('ITEM').connection.targetBlock();
+                    if (connectedBlock && connectedBlock.type !== `${categoryPrefix}forkvinpairs_item`) {
+                        connectedBlock.unplug();
+                    }
+                }
             }
 
             this.workspace.addChangeListener(this._workspaceChangeEvent);
@@ -248,6 +277,7 @@ function register() {
                 this._workspaceChangeEvent = null;
             }
             const keyInput = this.getInput('KEY');
+            const itemInput = this.getInput('ITEM');
             if (keyInput && keyInput.connection.targetBlock()) {
                 keyInput.connection.targetBlock().dispose(healStack);
                 Blockly.BlockSvg.prototype.dispose.call(this, keyInput);
@@ -258,9 +288,21 @@ function register() {
                     }
                 }
             }
+            if (itemInput && itemInput.connection.targetBlock()) {
+                itemInput.connection.targetBlock().dispose(healStack);
+                Blockly.BlockSvg.prototype.dispose.call(this, itemInput);
+                if (itemInput.connection?.shadowDom) {
+                    const shadowBlock = itemInput.connection.targetBlock();
+                    if (shadowBlock) {
+                        shadowBlock.dispose(healStack);
+                    }
+                }
+            }
             try {
                 Blockly.BlockSvg.prototype.dispose.call(this, keyInput);
+                Blockly.BlockSvg.prototype.dispose.call(this, itemInput);
                 this.removeInput('KEY', true);
+                this.removeInput('ITEM', true);
                 this.workspace.resize();
                 this.workspace.render();
             } catch {
@@ -296,6 +338,22 @@ function register() {
         const keyVar = (parent && parent.getVars()[0]) || "k";
 
         return [keyVar, luaGenerator.ORDER_ATOMIC];
+    });
+
+    registerBlock(`${categoryPrefix}forkvinpairs_item`, {
+        message0: 'item',
+        args0: [],
+        output: ["Number", "item"],
+        colour: categoryColor,
+    }, (block) => {
+        let parent = block.getSurroundParent();
+        while (parent && parent.type !== `${categoryPrefix}forkvinpairs`) {
+            parent = parent.getSurroundParent();
+        }
+
+        const itemVar = (parent && parent.getVars()[1]) || "v";
+
+        return [itemVar, luaGenerator.ORDER_ATOMIC];
     });
 
     registerBlock(`${categoryPrefix}ifthen`, {
