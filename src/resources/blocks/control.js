@@ -231,24 +231,26 @@ function register() {
             }, 1);
 
             this._workspaceChangeEvent = async (event) => {
-                if (event.type === Blockly.Events.BLOCK_MOVE || event.type === Blockly.Events.BLOCK_DELETE) {
-                    while (this.workspace && this.rendered && !this.isDisposed_ && (!this.getInput('KEY') || !this.getInput('KEY').connection)) {
-                        await new Promise(resolve => setTimeout(resolve, 10))
+                (async (blocklyThis) => {
+                    if (event.type === Blockly.Events.BLOCK_MOVE || event.type === Blockly.Events.BLOCK_DELETE) {
+                        while (blocklyThis.workspace && blocklyThis.rendered && !blocklyThis.isDisposed_ && (!blocklyThis.getInput('KEY') || !blocklyThis.getInput('KEY').connection)) {
+                            await new Promise(resolve => setTimeout(resolve, 10))
+                        }
+                        const keyInput = blocklyThis.getInput('KEY');
+                        if (!keyInput.connection.targetBlock()) {
+                            blocklyThis.ensureKeyReporter();
+                        }
                     }
-                    const keyInput = this.getInput('KEY');
-                    if (!keyInput.connection.targetBlock()) {
-                        this.ensureKeyReporter();
+                    if (event.type === Blockly.Events.BLOCK_MOVE && event.newParentId === blocklyThis.id && event.inputName === 'KEY') {
+                        while (blocklyThis.workspace && blocklyThis.rendered && !blocklyThis.isDisposed_ && (!blocklyThis.getInput('KEY') || !blocklyThis.getInput('KEY').connection)) {
+                            await new Promise(resolve => setTimeout(resolve, 10))
+                        }
+                        const connectedBlock = blocklyThis.getInput('KEY').connection.targetBlock();
+                        if (connectedBlock && connectedBlock.type !== `${categoryPrefix}forkvinpairs_key`) {
+                            connectedBlock.unplug();
+                        }
                     }
-                }
-                if (event.type === Blockly.Events.BLOCK_MOVE && event.newParentId === this.id && event.inputName === 'KEY') {
-                    while (this.workspace && this.rendered && !this.isDisposed_ && (!this.getInput('KEY') || !this.getInput('KEY').connection)) {
-                        await new Promise(resolve => setTimeout(resolve, 10))
-                    }
-                    const connectedBlock = this.getInput('KEY').connection.targetBlock();
-                    if (connectedBlock && connectedBlock.type !== `${categoryPrefix}forkvinpairs_key`) {
-                        connectedBlock.unplug();
-                    }
-                }
+                })(this)
                 if (event.type === Blockly.Events.BLOCK_MOVE || event.type === Blockly.Events.BLOCK_DELETE) {
                     while (this.workspace && this.rendered && !this.isDisposed_ && (!this.getInput('ITEM') || !this.getInput('ITEM').connection)) {
                         await new Promise(resolve => setTimeout(resolve, 10))
@@ -258,7 +260,7 @@ function register() {
                         this.ensureKeyReporter();
                     }
                 }
-                if (event.type === Blockly.Events.BLOCK_MOVE && event.newParentId === this.id && event.inputName === 'KEY') {
+                if (event.type === Blockly.Events.BLOCK_MOVE && event.newParentId === this.id && event.inputName === 'ITEM') {
                     while (this.workspace && this.rendered && !this.isDisposed_ && (!this.getInput('ITEM') || !this.getInput('ITEM').connection)) {
                         await new Promise(resolve => setTimeout(resolve, 10))
                     }
